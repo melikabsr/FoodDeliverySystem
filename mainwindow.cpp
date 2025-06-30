@@ -4,6 +4,7 @@
 #include "LoginDialog.h"
 #include "enums.h"
 #include "CustomerPanel.h"
+#include "Restaurant.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -27,15 +28,24 @@ MainWindow::MainWindow(QWidget *parent)
     connect(exitAction, &QAction::triggered, this, &MainWindow::onExitClicked);
 
     // محتوا
-    centralWidget = new QWidget(this);
-    welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!", this);
+    QWidget* centralWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(centralWidget);
+   QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
     welcomeLabel->setAlignment(Qt::AlignCenter);
-
+    layout->addWidget(welcomeLabel);
     mainLayout = new QVBoxLayout();
     mainLayout->addWidget(welcomeLabel);
 
     centralWidget->setLayout(mainLayout);
     setCentralWidget(centralWidget);
+
+
+
+
+
+
+
+
 }
 
 MainWindow::~MainWindow() {}
@@ -54,4 +64,21 @@ void MainWindow::onLoginClicked() {
 
 void MainWindow::onExitClicked() {
     close();
+}
+
+
+
+
+
+MainWindow::MainWindow(QWidget *parent)
+    : QMainWindow(parent)
+{
+    QWidget* centralWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(centralWidget);
+
+    QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
+    welcomeLabel->setAlignment(Qt::AlignCenter);
+    layout->addWidget(welcomeLabel);
+
+    setCentralWidget(centralWidget);
 }
