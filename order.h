@@ -2,43 +2,33 @@
 #define ORDER_H
 
 #include <QString>
-#include <QList>
-#include <QDateTime>
+#include <QMap>
+#include <QPair>
 #include "Food.h"
 #include "enums.h"
-// enum class OrderStatus {
-//     PENDING,
-//     PREPARING,
-//     READY,
-//     DELIVERED,
-//     CANCELLED
-// };
 
 class Order
 {
-public:
-    Order(int id,
-          const QString& customerUsername,
-          const QList<QPair<Food, int>>& items,
-          double totalPrice,
-          const QDateTime& timestamp = QDateTime::currentDateTime());
-
-    int getId() const;
-    QString getCustomerUsername() const;
-    QList<QPair<Food, int>> getItems() const;
-    double getTotalPrice() const;
-    QDateTime getTimestamp() const;
-    OrderStatus getStatus() const;
-
-    void setStatus(OrderStatus status);
-
 private:
     int id;
-    QString customerUsername;
-    QList<QPair<Food, int>> items;
-    double totalPrice;
-    QDateTime timestamp;
+    QMap<int, QPair<Food, int>> items;
     OrderStatus status;
+    double totalAmount;
+    QString customerUsername;
+
+public:
+    Order();
+    Order(int id, const QString& customerUsername);
+
+    void addItem(const Food& food, int quantity);
+    void calculateTotal();
+
+    int getId() const;
+    OrderStatus getStatus() const;
+    void setStatus(OrderStatus newStatus);
+    double getTotalAmount() const;
+    QMap<int, QPair<Food, int>> getItems() const;
+    QString getCustomerUsername() const;
 };
 
 #endif // ORDER_H

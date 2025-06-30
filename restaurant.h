@@ -4,7 +4,6 @@
 #include <QString>
 #include <QList>
 #include "Food.h"
-#include "enums.h"
 
 class Restaurant
 {
@@ -13,19 +12,19 @@ private:
     QString name;
     QString address;
     QList<Food> menu;
-    bool isActive;
 
 public:
-    Restaurant(int id, const QString& name, const QString& address, bool active = true);
+    Restaurant();
+    Restaurant(int id, const QString& name, const QString& address);
 
     int getId() const;
     QString getName() const;
     QString getAddress() const;
-    bool getStatus() const;
+    QList<Food> getMenu() const;
 
     void addFood(const Food& food);
-    void removeFood(int foodId);
-    QList<Food> getMenu() const;
+    void setMenu(const QList<Food>& newMenu);
 };
 
 #endif // RESTAURANT_H
+

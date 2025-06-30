@@ -10,12 +10,13 @@ enum class UserType {
 
 // وضعیت سفارش‌ها
 enum class OrderStatus {
-    PENDING,        // در انتظار تأیید
-    PREPARING,      // در حال آماده‌سازی
-    READY,          // آماده تحویل
-    DELIVERED,      // تحویل داده شده
-    CANCELLED       // لغو شده
+    PENDING,
+    PREPARING,
+    READY,
+    DELIVERED,
+    CANCELLED
 };
+
 
 // دسته‌بندی غذاها
 enum class FoodCategory {

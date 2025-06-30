@@ -1,11 +1,11 @@
+
 #ifndef CUSTOMERPANEL_H
 #define CUSTOMERPANEL_H
 
 #include <QWidget>
-#include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <enums.h>
+#include <QVBoxLayout>
 
 class CustomerPanel : public QWidget
 {
@@ -14,10 +14,14 @@ class CustomerPanel : public QWidget
 public:
     explicit CustomerPanel(QWidget *parent = nullptr);
 
+private slots:
+    void showOrderHistory();
+
 private:
     QLabel* welcomeLabel;
     QPushButton* viewRestaurantsButton;
     QPushButton* viewCartButton;
+    QPushButton* viewOrdersButton;
     QPushButton* logoutButton;
 };
 
