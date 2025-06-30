@@ -37,3 +37,15 @@ Order* OrderManager::getOrderById(int id)
     }
     return nullptr;
 }
+
+
+void OrderManager::removeOrder(int orderId)
+{
+    for (int i = 0; i < orders.size(); ++i) {
+        if (orders[i].getId() == orderId) {
+            orders.removeAt(i);
+            break;
+        }
+    }
+}
+

@@ -11,6 +11,7 @@ class CustomerService
 {
 public:
     static CustomerService& instance();
+    void removeUser(const QString& username);
 
     void addToCart(const Food& food);
     void removeItem(int id);
@@ -19,8 +20,12 @@ public:
 
     void setCurrentUser(std::shared_ptr<User> user);
     QString getCurrentUsername() const;
+    QList<std::shared_ptr<User>> getAllUsers() const;
 
 private:
+
+    QList<std::shared_ptr<User>> allUsers;
+
     CustomerService() = default;
     QMap<int, QPair<Food, int>> cart;
     std::shared_ptr<User> currentUser;

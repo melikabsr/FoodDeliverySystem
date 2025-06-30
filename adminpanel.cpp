@@ -1,6 +1,8 @@
 #include "AdminPanel.h"
 #include <QMessageBox>
 #include <QApplication>
+#include "userlistwidget.h"
+#include "orderlistwidget.h"
 
 AdminPanel::AdminPanel(QWidget *parent)
     : QWidget(parent)
@@ -23,6 +25,7 @@ AdminPanel::AdminPanel(QWidget *parent)
     layout->addWidget(viewOrdersBtn);
     layout->addWidget(exitBtn);
 
+    // اتصال‌ها
     connect(viewUsersBtn, &QPushButton::clicked, this, &AdminPanel::onViewUsersClicked);
     connect(viewOrdersBtn, &QPushButton::clicked, this, &AdminPanel::onViewOrdersClicked);
     connect(exitBtn, &QPushButton::clicked, this, &AdminPanel::onExitClicked);
@@ -30,16 +33,19 @@ AdminPanel::AdminPanel(QWidget *parent)
 
 void AdminPanel::onViewUsersClicked()
 {
-    QMessageBox::information(this, "Users", "📋 User list will be shown here.");
+    auto* widget = new UserListWidget();
+    widget->show();
 }
 
 void AdminPanel::onViewOrdersClicked()
 {
-    QMessageBox::information(this, "Orders", "📦 Order list will be shown here.");
+    auto* orders = new OrderListWidget();
+    orders->show();
 }
 
 void AdminPanel::onExitClicked()
 {
     QMessageBox::information(this, "Exit", "👋 Logging out...");
-    qApp->exit();  // برای بستن کل برنامه
+    qApp->exit();
 }
+

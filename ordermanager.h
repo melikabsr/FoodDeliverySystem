@@ -16,6 +16,7 @@ public:
     QVector<Order> getOrdersForCustomer(const QString& username) const;
     QVector<Order>& getAllOrders();
     Order* getOrderById(int id);
+    void removeOrder(int orderId);
 
 private:
     explicit OrderManager(QObject* parent = nullptr);
