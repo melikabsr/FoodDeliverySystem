@@ -5,10 +5,9 @@
 #include <QLineEdit>
 #include <QComboBox>
 #include <QPushButton>
-#include <QVBoxLayout>
 #include <memory>
-
 #include "User.h"
+#include "enums.h"
 
 class LoginDialog : public QDialog
 {
@@ -16,7 +15,7 @@ class LoginDialog : public QDialog
 
 public:
     explicit LoginDialog(QWidget *parent = nullptr);
-    std::unique_ptr<User> getLoggedInUser() const;
+    std::unique_ptr<User> getLoggedInUser();  // نسخه non-const برای انتقال مالکیت
 
 private slots:
     void attemptLogin();
@@ -31,3 +30,4 @@ private:
 };
 
 #endif // LOGINDIALOG_H
+

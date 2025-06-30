@@ -5,14 +5,14 @@
 #include <QList>
 #include <QDateTime>
 #include "Food.h"
-
-enum class OrderStatus {
-    PENDING,
-    PREPARING,
-    READY,
-    DELIVERED,
-    CANCELLED
-};
+#include "enums.h"
+// enum class OrderStatus {
+//     PENDING,
+//     PREPARING,
+//     READY,
+//     DELIVERED,
+//     CANCELLED
+// };
 
 class Order
 {

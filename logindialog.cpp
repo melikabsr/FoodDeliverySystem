@@ -1,6 +1,7 @@
 #include "LoginDialog.h"
 #include "UserFactory.h"
 #include <QMessageBox>
+#include <QVBoxLayout>
 #include <QLabel>
 
 LoginDialog::LoginDialog(QWidget *parent)
@@ -50,15 +51,16 @@ void LoginDialog::attemptLogin()
 
     auto tempUser = UserFactory::createUser(type, username, password, username + "@example.com");
 
-    if (tempUser->login(username, password)) {
+    if (tempUser && tempUser->login(username, password)) {
         loggedInUser = std::move(tempUser);
         QMessageBox::information(this, "Login Success", "Welcome, " + username + "!");
-        accept();
+        accept();  // بسته‌شدن دیالوگ و بازگشت به MainWindow
     } else {
         QMessageBox::critical(this, "Login Failed", "Invalid credentials.");
     }
 }
 
-std::unique_ptr<User> LoginDialog::getLoggedInUser() const {
-    return nullptr; // در فاز بعدی اتصال واقعی داده‌ها را اضافه خواهیم کرد
+std::unique_ptr<User> LoginDialog::getLoggedInUser() {
+    return std::move(loggedInUser);  // انتقال مالکیت به MainWindow
 }
+

@@ -2,6 +2,7 @@
 #define RESTAURANTOWNER_H
 
 #include "User.h"
+#include "enums.h"
 
 class RestaurantOwner : public User {
 public:

@@ -2,8 +2,9 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QPushButton>
-#include "CustomerService.h"
 #include <QMessageBox>
+#include "CustomerService.h"
+#include <enums.h>
 
 ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
     : QWidget(parent)
@@ -14,13 +15,12 @@ ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
     layout = new QVBoxLayout(this);
     totalLabel = new QLabel("Total: $0", this);
     totalLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
-
     layout->addWidget(totalLabel);
+
     loadCartItems();
 
     QPushButton* clearBtn = new QPushButton("❌ Clear Cart");
     QPushButton* checkoutBtn = new QPushButton("✅ Submit Order");
-
     layout->addWidget(clearBtn);
     layout->addWidget(checkoutBtn);
 
@@ -36,15 +36,18 @@ ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
     });
 }
 
-
 void ShoppingCartWidget::addItem(const Food& food)
 {
     int id = food.getId();
+
     if (items.contains(id)) {
-        items[id].second += 1;
+        auto pair = items.value(id);
+        pair.second += 1;
+        items.insert(id, pair);
     } else {
-        items[id] = qMakePair(food, 1);
+        items.insert(id, qMakePair(food, 1));
     }
+
     updateDisplay();
 }
 
@@ -58,7 +61,6 @@ void ShoppingCartWidget::removeItem(int id)
 
 void ShoppingCartWidget::updateDisplay()
 {
-    // پاک کردن قدیمی‌ها
     QLayoutItem *item;
     while ((item = layout->takeAt(1)) != nullptr) {
         delete item->widget();
@@ -77,7 +79,6 @@ void ShoppingCartWidget::updateDisplay()
 
         QLabel* desc = new QLabel(food.getDescription());
         QLabel* priceLabel = new QLabel(QString("💰 %1 × %2 = %3 $").arg(food.getPrice()).arg(qty).arg(price));
-
         QPushButton* removeBtn = new QPushButton("🗑 Remove");
 
         connect(removeBtn, &QPushButton::clicked, [=]() {
@@ -95,10 +96,8 @@ void ShoppingCartWidget::updateDisplay()
     totalLabel->setText(QString("Total: $%1").arg(total));
 }
 
-
 void ShoppingCartWidget::refresh()
 {
-    // حذف همه ویجت‌های فعلی (بجز عنوان و دکمه‌ها)
     QLayoutItem* item;
     while ((item = layout->takeAt(1)) != nullptr) {
         if (item->widget()) {
@@ -111,15 +110,12 @@ void ShoppingCartWidget::refresh()
     loadCartItems();
 }
 
-
-
-
 void ShoppingCartWidget::loadCartItems()
 {
     double total = 0;
-    auto items = CustomerService::instance().getCartItems();
+    auto cartItems = CustomerService::instance().getCartItems();
 
-    for (const auto& pair : items) {
+    for (const auto& pair : cartItems) {
         const Food& food = pair.first;
         int qty = pair.second;
         double price = food.getPrice() * qty;
@@ -144,7 +140,6 @@ void ShoppingCartWidget::loadCartItems()
         vbox->addWidget(info);
         vbox->addWidget(removeBtn);
         box->setLayout(vbox);
-
         layout->addWidget(box);
     }
 

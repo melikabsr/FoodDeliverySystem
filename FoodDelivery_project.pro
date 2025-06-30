@@ -1,5 +1,5 @@
 QT       += widgets
-
+QT       += core
 CONFIG   += c++17
 TEMPLATE = app
 TARGET = FoodDelivery_project

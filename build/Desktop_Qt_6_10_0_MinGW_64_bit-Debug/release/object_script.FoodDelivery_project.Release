@@ -7,6 +7,7 @@ release/logindialog.o
 release/main.o
 release/mainwindow.o
 release/menuwidget.o
+release/order.o
 release/restaurant.o
 release/restaurantlistwidget.o
 release/restaurantowner.o

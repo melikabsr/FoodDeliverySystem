@@ -7,6 +7,7 @@
 #include <QScrollArea>
 #include <QPushButton>
 #include <QList>
+#include "enums.h"
 
 #include "Restaurant.h"
 

@@ -2,6 +2,7 @@
 #define ADMIN_H
 
 #include "User.h"
+#include <enums.h>
 
 class Admin : public User {
 public:
