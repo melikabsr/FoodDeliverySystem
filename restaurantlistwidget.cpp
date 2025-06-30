@@ -1,6 +1,7 @@
 #include "RestaurantListWidget.h"
 #include <QGroupBox>
 #include <QMessageBox>
+#include <menuwidget.h>
 RestaurantListWidget::RestaurantListWidget(QWidget *parent)
     : QWidget(parent)
 {
@@ -33,8 +34,12 @@ void RestaurantListWidget::displayRestaurants()
 
         mainLayout->addWidget(card);
 
-        connect(viewMenuBtn, &QPushButton::clicked, [r]() {
-            QMessageBox::information(nullptr, "Restaurant", "Menu of: " + r.getName());
+        connect(viewMenuBtn, &QPushButton::clicked, [=]() {
+            MenuWidget* menu = new MenuWidget(r);
+            menu->setWindowTitle("Menu - " + r.getName());
+            menu->resize(400, 400);
+            menu->show();
         });
+
     }
 }

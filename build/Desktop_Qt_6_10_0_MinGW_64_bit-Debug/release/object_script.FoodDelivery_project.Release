@@ -1,6 +1,7 @@
 release/admin.o
 release/customer.o
 release/customerpanel.o
+release/customerservice.o
 release/food.o
 release/logindialog.o
 release/main.o
@@ -9,6 +10,7 @@ release/menuwidget.o
 release/restaurant.o
 release/restaurantlistwidget.o
 release/restaurantowner.o
+release/shoppingcartwidget.o
 release/user.o
 release/userfactory.o
 release/moc_customerpanel.o
@@ -16,3 +18,4 @@ release/moc_logindialog.o
 release/moc_mainwindow.o
 release/moc_menuwidget.o
 release/moc_restaurantlistwidget.o
+release/moc_shoppingcartwidget.o

@@ -2,7 +2,7 @@
 #include <QGroupBox>
 #include <QHBoxLayout>
 #include <QMessageBox>
-
+#include "CustomerService.h"
 MenuWidget::MenuWidget(const Restaurant& restaurant, QWidget *parent)
     : QWidget(parent)
 {
@@ -29,8 +29,11 @@ void MenuWidget::loadMenu(const QList<Food>& menu)
         box->setLayout(vbox);
         layout->addWidget(box);
 
+
+
+
         connect(addBtn, &QPushButton::clicked, [=]() {
-            emit foodAdded(food);
+            CustomerService::instance().addToCart(food);
             QMessageBox::information(this, "Added", food.getName() + " added to cart.");
         });
     }

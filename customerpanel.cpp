@@ -2,6 +2,8 @@
 #include <QMessageBox>
 #include <QApplication>
 #include "RestaurantListWidget.h"
+#include "ShoppingCartWidget.h"
+
 CustomerPanel::CustomerPanel(QWidget *parent)
     : QWidget(parent)
 {
@@ -25,8 +27,11 @@ CustomerPanel::CustomerPanel(QWidget *parent)
         listWidget->resize(400, 400);
         listWidget->show();
     });
-    connect(viewCartButton, &QPushButton::clicked, []() {
-        QMessageBox::information(nullptr, "Cart", "Coming soon...");
+    connect(viewCartButton, &QPushButton::clicked, [=]() {
+        auto* cart = new ShoppingCartWidget();
+        cart->setWindowTitle("🛒 Your Cart");
+        cart->resize(400, 400);
+        cart->show();
     });
 
     connect(logoutButton, &QPushButton::clicked, []() {

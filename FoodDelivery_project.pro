@@ -1,28 +1,24 @@
-QT       += core gui
-QT       += core gui widgets
+QT       += widgets
 
 CONFIG   += c++17
 TEMPLATE = app
 TARGET = FoodDelivery_project
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-
-
-# You can make your code fail to compile if it uses deprecated APIs.
-# In order to do so, uncomment the following line.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
     admin.cpp \
     customer.cpp \
     customerpanel.cpp \
+    customerservice.cpp \
     food.cpp \
     logindialog.cpp \
     main.cpp \
     mainwindow.cpp \
     menuwidget.cpp \
+    order.cpp \
     restaurant.cpp \
     restaurantlistwidget.cpp \
     restaurantowner.cpp \
+    shoppingcartwidget.cpp \
     user.cpp \
     userfactory.cpp
 
@@ -30,14 +26,17 @@ HEADERS += \
     admin.h \
     customer.h \
     customerpanel.h \
+    customerservice.h \
     enums.h \
     food.h \
     logindialog.h \
     mainwindow.h \
     menuwidget.h \
+    order.h \
     restaurant.h \
     restaurantlistwidget.h \
     restaurantowner.h \
+    shoppingcartwidget.h \
     user.h \
     userfactory.h
 
@@ -45,13 +44,16 @@ FORMS += \
     admin.ui \
     customer.ui \
     customerpanel.ui \
+    customerservice.ui \
     food.ui \
     logindialog.ui \
     mainwindow.ui \
     menuwidget.ui \
+    order.ui \
     restaurant.ui \
     restaurantlistwidget.ui \
     restaurantowner.ui \
+    shoppingcartwidget.ui \
     user.ui \
     userfactory.ui
 

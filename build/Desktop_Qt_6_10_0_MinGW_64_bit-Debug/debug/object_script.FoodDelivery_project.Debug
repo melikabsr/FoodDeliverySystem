@@ -1,6 +1,7 @@
 debug/admin.o
 debug/customer.o
 debug/customerpanel.o
+debug/customerservice.o
 debug/food.o
 debug/logindialog.o
 debug/main.o
@@ -9,6 +10,7 @@ debug/menuwidget.o
 debug/restaurant.o
 debug/restaurantlistwidget.o
 debug/restaurantowner.o
+debug/shoppingcartwidget.o
 debug/user.o
 debug/userfactory.o
 debug/moc_customerpanel.o
@@ -16,3 +18,4 @@ debug/moc_logindialog.o
 debug/moc_mainwindow.o
 debug/moc_menuwidget.o
 debug/moc_restaurantlistwidget.o
+debug/moc_shoppingcartwidget.o
