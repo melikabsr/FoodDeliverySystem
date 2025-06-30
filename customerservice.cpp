@@ -1,7 +1,5 @@
 #include "CustomerService.h"
 
-CustomerService::CustomerService() {}
-
 CustomerService& CustomerService::instance()
 {
     static CustomerService service;
@@ -10,18 +8,17 @@ CustomerService& CustomerService::instance()
 
 void CustomerService::addToCart(const Food& food)
 {
-    for (auto& item : cart) {
-        if (item.first.getId() == food.getId()) {
-            item.second += 1;
-            return;
-        }
+    int id = food.getId();
+    if (cart.contains(id)) {
+        cart[id].second += 1;
+    } else {
+        cart.insert(id, qMakePair(food, 1));
     }
-    cart.append(qMakePair(food, 1));
 }
 
-QList<QPair<Food, int>> CustomerService::getCartItems() const
+void CustomerService::removeItem(int id)
 {
-    return cart;
+    cart.remove(id);
 }
 
 void CustomerService::clearCart()
@@ -29,8 +26,17 @@ void CustomerService::clearCart()
     cart.clear();
 }
 
-
-void CustomerService::removeItem(int id) {
-    cart.remove(id);  // اگر cart از جنس QMap<int, QPair<Food, int>> هست
+QMap<int, QPair<Food, int>> CustomerService::getCartItems() const
+{
+    return cart;
 }
 
+void CustomerService::setCurrentUser(std::shared_ptr<User> user)
+{
+    currentUser = user;
+}
+
+QString CustomerService::getCurrentUsername() const
+{
+    return currentUser ? currentUser->getUsername() : "unknown";
+}

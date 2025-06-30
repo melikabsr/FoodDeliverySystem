@@ -5,7 +5,9 @@ TEMPLATE = app
 TARGET = FoodDelivery_project
 
 SOURCES += \
+    addfooddialog.cpp \
     admin.cpp \
+    adminpanel.cpp \
     customer.cpp \
     customerpanel.cpp \
     customerservice.cpp \
@@ -15,15 +17,20 @@ SOURCES += \
     mainwindow.cpp \
     menuwidget.cpp \
     order.cpp \
+    orderhistorywidget.cpp \
+    ordermanager.cpp \
     restaurant.cpp \
     restaurantlistwidget.cpp \
     restaurantowner.cpp \
+    restaurantownerpanel.cpp \
     shoppingcartwidget.cpp \
     user.cpp \
     userfactory.cpp
 
 HEADERS += \
+    addfooddialog.h \
     admin.h \
+    adminpanel.h \
     customer.h \
     customerpanel.h \
     customerservice.h \
@@ -33,15 +40,20 @@ HEADERS += \
     mainwindow.h \
     menuwidget.h \
     order.h \
+    orderhistorywidget.h \
+    ordermanager.h \
     restaurant.h \
     restaurantlistwidget.h \
     restaurantowner.h \
+    restaurantownerpanel.h \
     shoppingcartwidget.h \
     user.h \
     userfactory.h
 
 FORMS += \
+    addfooddialog.ui \
     admin.ui \
+    adminpanel.ui \
     customer.ui \
     customerpanel.ui \
     customerservice.ui \
@@ -50,9 +62,12 @@ FORMS += \
     mainwindow.ui \
     menuwidget.ui \
     order.ui \
+    orderhistorywidget.ui \
+    ordermanager.ui \
     restaurant.ui \
     restaurantlistwidget.ui \
     restaurantowner.ui \
+    restaurantownerpanel.ui \
     shoppingcartwidget.ui \
     user.ui \
     userfactory.ui

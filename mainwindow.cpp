@@ -7,6 +7,14 @@
 #include "MenuWidget.h"
 #include "MainWindow.h"
 #include <QVBoxLayout>
+#include <memory>
+#include "CustomerService.h"
+#include "RestaurantOwnerPanel.h"
+#include "AdminPanel.h"
+#include <QApplication>
+
+
+
 /*
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -88,8 +96,23 @@ void MainWindow::onLoginClicked() {
     LoginDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         auto user = dialog.getLoggedInUser();
-        if (user && user->getUserType() == UserType::CUSTOMER) {
-            auto* panel = new CustomerPanel();
+        if (!user) return;
+
+        std::shared_ptr<User> sharedUser = std::move(user);
+        CustomerService::instance().setCurrentUser(sharedUser);
+
+        UserType type = sharedUser->getUserType();
+        QWidget* panel = nullptr;
+
+        if (type == UserType::CUSTOMER) {
+            panel = new CustomerPanel();
+        } else if (type == UserType::RESTAURANT_OWNER) {
+            panel = new RestaurantOwnerPanel();
+        } else if (type == UserType::ADMIN) {
+            panel = new AdminPanel();
+        }
+
+        if (panel) {
             setCentralWidget(panel);
         }
     }

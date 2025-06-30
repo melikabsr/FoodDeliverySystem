@@ -1,39 +1,23 @@
 #include "Restaurant.h"
 
-Restaurant::Restaurant(int id, const QString& name, const QString& address, bool active)
-    : id(id), name(name), address(address), isActive(active)
-{
-}
+Restaurant::Restaurant()
+    : id(0), name(""), address("") {}
 
-int Restaurant::getId() const {
-    return id;
-}
+Restaurant::Restaurant(int id, const QString& name, const QString& address)
+    : id(id), name(name), address(address) {}
 
-QString Restaurant::getName() const {
-    return name;
-}
+int Restaurant::getId() const { return id; }
 
-QString Restaurant::getAddress() const {
-    return address;
-}
+QString Restaurant::getName() const { return name; }
 
-bool Restaurant::getStatus() const {
-    return isActive;
-}
+QString Restaurant::getAddress() const { return address; }
+
+QList<Food> Restaurant::getMenu() const { return menu; }
 
 void Restaurant::addFood(const Food& food) {
     menu.append(food);
 }
 
-void Restaurant::removeFood(int foodId) {
-    for (int i = 0; i < menu.size(); ++i) {
-        if (menu[i].getId() == foodId) {
-            menu.removeAt(i);
-            return;
-        }
-    }
-}
-
-QList<Food> Restaurant::getMenu() const {
-    return menu;
+void Restaurant::setMenu(const QList<Food>& newMenu) {
+    menu = newMenu;
 }

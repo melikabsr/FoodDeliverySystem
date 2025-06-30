@@ -27,3 +27,4 @@ QString Food::getImagePath() const { return imagePath; }
 
 
 
+

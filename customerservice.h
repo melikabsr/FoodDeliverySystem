@@ -1,10 +1,11 @@
 #ifndef CUSTOMERSERVICE_H
 #define CUSTOMERSERVICE_H
 
-#include <QList>
+#include <QMap>
 #include <QPair>
+#include <memory>
 #include "Food.h"
-#include <enums.h>
+#include "User.h"
 
 class CustomerService
 {
@@ -12,14 +13,20 @@ public:
     static CustomerService& instance();
 
     void addToCart(const Food& food);
-    QList<QPair<Food, int>> getCartItems() const;
-    void clearCart();
     void removeItem(int id);
+    void clearCart();
+    QMap<int, QPair<Food, int>> getCartItems() const;
+
+    void setCurrentUser(std::shared_ptr<User> user);
+    QString getCurrentUsername() const;
 
 private:
-    CustomerService(); // Singleton
-    QList<QPair<Food, int>> cart;
+    CustomerService() = default;
+    QMap<int, QPair<Food, int>> cart;
+    std::shared_ptr<User> currentUser;
 };
 
 #endif // CUSTOMERSERVICE_H
+
+
 

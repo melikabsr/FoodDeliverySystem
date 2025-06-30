@@ -5,6 +5,8 @@
 #include <QMessageBox>
 #include "CustomerService.h"
 #include <enums.h>
+#include "Order.h"
+#include "OrderManager.h"
 
 ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
     : QWidget(parent)
@@ -30,7 +32,24 @@ ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
     });
 
     connect(checkoutBtn, &QPushButton::clicked, [=]() {
-        QMessageBox::information(this, "Success", "Order submitted!");
+        auto items = CustomerService::instance().getCartItems();
+        if (items.isEmpty()) {
+            QMessageBox::warning(this, "Cart Empty", "Your cart is empty.");
+            return;
+        }
+
+        QString username = CustomerService::instance().getCurrentUsername();
+
+        Order newOrder(OrderManager::instance().getAllOrders().size() + 1, username);
+        for (const auto& pair : items) {
+            const Food& food = pair.first;
+            int qty = pair.second;
+            newOrder.addItem(food, qty);
+        }
+
+        OrderManager::instance().addOrder(newOrder);
+        QMessageBox::information(this, "Success", "Order submitted successfully!");
+
         CustomerService::instance().clearCart();
         refresh();
     });
@@ -39,7 +58,6 @@ ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
 void ShoppingCartWidget::addItem(const Food& food)
 {
     int id = food.getId();
-
     if (items.contains(id)) {
         auto pair = items.value(id);
         pair.second += 1;
