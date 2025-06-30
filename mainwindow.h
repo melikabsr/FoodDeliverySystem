@@ -1,23 +1,25 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef MENUWIDGET_H
+#define MENUWIDGET_H
 
-#include <QMainWindow>
+#include <QWidget>
+#include <QVBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include "Restaurant.h"
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
+class MenuWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MenuWidget(const Restaurant& restaurant, QWidget *parent = nullptr);
+
+signals:
+    void foodAdded(const Food& food);
 
 private:
-    Ui::MainWindow *ui;
+    QVBoxLayout* layout;
+    void loadMenu(const QList<Food>& menu);
 };
-#endif // MAINWINDOW_H
+
+#endif // MENUWIDGET_H
