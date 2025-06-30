@@ -2,10 +2,9 @@
 #define ADDRESTAURANTDIALOG_H
 
 #include <QDialog>
-
-namespace Ui {
-class AddRestaurantDialog;
-}
+#include <QLineEdit>
+#include <QPushButton>
+#include <QVBoxLayout>
 
 class AddRestaurantDialog : public QDialog
 {
@@ -13,10 +12,15 @@ class AddRestaurantDialog : public QDialog
 
 public:
     explicit AddRestaurantDialog(QWidget *parent = nullptr);
-    ~AddRestaurantDialog();
+
+private slots:
+    void onSubmit();
 
 private:
-    Ui::AddRestaurantDialog *ui;
+    QLineEdit* nameEdit;
+    QLineEdit* addressEdit;
+    QPushButton* submitBtn;
+    QPushButton* cancelBtn;
 };
 
 #endif // ADDRESTAURANTDIALOG_H

@@ -1,5 +1,7 @@
 release/addfooddialog.o
+release/addrestaurantdialog.o
 release/admin.o
+release/adminmenuwidget.o
 release/adminpanel.o
 release/customer.o
 release/customerpanel.o
@@ -14,14 +16,18 @@ release/orderhistorywidget.o
 release/orderlistwidget.o
 release/ordermanager.o
 release/restaurant.o
+release/restaurantadminwidget.o
 release/restaurantlistwidget.o
 release/restaurantowner.o
 release/restaurantownerpanel.o
+release/restaurantservice.o
 release/shoppingcartwidget.o
 release/user.o
 release/userfactory.o
 release/userlistwidget.o
 release/moc_addfooddialog.o
+release/moc_addrestaurantdialog.o
+release/moc_adminmenuwidget.o
 release/moc_adminpanel.o
 release/moc_customerpanel.o
 release/moc_logindialog.o
@@ -30,7 +36,9 @@ release/moc_menuwidget.o
 release/moc_orderhistorywidget.o
 release/moc_orderlistwidget.o
 release/moc_ordermanager.o
+release/moc_restaurantadminwidget.o
 release/moc_restaurantlistwidget.o
 release/moc_restaurantownerpanel.o
+release/moc_restaurantservice.o
 release/moc_shoppingcartwidget.o
 release/moc_userlistwidget.o
