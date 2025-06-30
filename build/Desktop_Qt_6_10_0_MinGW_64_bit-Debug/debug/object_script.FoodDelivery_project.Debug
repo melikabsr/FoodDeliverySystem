@@ -1,5 +1,7 @@
 debug/addfooddialog.o
+debug/addrestaurantdialog.o
 debug/admin.o
+debug/adminmenuwidget.o
 debug/adminpanel.o
 debug/customer.o
 debug/customerpanel.o
@@ -14,14 +16,18 @@ debug/orderhistorywidget.o
 debug/orderlistwidget.o
 debug/ordermanager.o
 debug/restaurant.o
+debug/restaurantadminwidget.o
 debug/restaurantlistwidget.o
 debug/restaurantowner.o
 debug/restaurantownerpanel.o
+debug/restaurantservice.o
 debug/shoppingcartwidget.o
 debug/user.o
 debug/userfactory.o
 debug/userlistwidget.o
 debug/moc_addfooddialog.o
+debug/moc_addrestaurantdialog.o
+debug/moc_adminmenuwidget.o
 debug/moc_adminpanel.o
 debug/moc_customerpanel.o
 debug/moc_logindialog.o
@@ -30,7 +36,9 @@ debug/moc_menuwidget.o
 debug/moc_orderhistorywidget.o
 debug/moc_orderlistwidget.o
 debug/moc_ordermanager.o
+debug/moc_restaurantadminwidget.o
 debug/moc_restaurantlistwidget.o
 debug/moc_restaurantownerpanel.o
+debug/moc_restaurantservice.o
 debug/moc_shoppingcartwidget.o
 debug/moc_userlistwidget.o

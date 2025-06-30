@@ -8,6 +8,7 @@ SOURCES += \
     addfooddialog.cpp \
     addrestaurantdialog.cpp \
     admin.cpp \
+    adminmenuwidget.cpp \
     adminpanel.cpp \
     customer.cpp \
     customerpanel.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
     restaurantlistwidget.cpp \
     restaurantowner.cpp \
     restaurantownerpanel.cpp \
+    restaurantservice.cpp \
     shoppingcartwidget.cpp \
     user.cpp \
     userfactory.cpp \
@@ -35,6 +37,7 @@ HEADERS += \
     addfooddialog.h \
     addrestaurantdialog.h \
     admin.h \
+    adminmenuwidget.h \
     adminpanel.h \
     customer.h \
     customerpanel.h \
@@ -53,6 +56,7 @@ HEADERS += \
     restaurantlistwidget.h \
     restaurantowner.h \
     restaurantownerpanel.h \
+    restaurantservice.h \
     shoppingcartwidget.h \
     user.h \
     userfactory.h \
@@ -62,6 +66,7 @@ FORMS += \
     addfooddialog.ui \
     addrestaurantdialog.ui \
     admin.ui \
+    adminmenuwidget.ui \
     adminpanel.ui \
     customer.ui \
     customerpanel.ui \
@@ -79,6 +84,7 @@ FORMS += \
     restaurantlistwidget.ui \
     restaurantowner.ui \
     restaurantownerpanel.ui \
+    restaurantservice.ui \
     shoppingcartwidget.ui \
     user.ui \
     userfactory.ui \
