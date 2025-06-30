@@ -28,3 +28,9 @@ void CustomerService::clearCart()
 {
     cart.clear();
 }
+
+
+void CustomerService::removeItem(int id) {
+    cart.remove(id);  // اگر cart از جنس QMap<int, QPair<Food, int>> هست
+}
+

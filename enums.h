@@ -22,8 +22,12 @@ enum class FoodCategory {
     FAST_FOOD,
     IRANIAN,
     PIZZA,
+    APPETIZER,
+    MAIN_COURSE,
     DRINKS,
     DESSERT
 };
 
 #endif // ENUMS_H
+
+

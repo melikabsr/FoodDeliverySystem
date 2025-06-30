@@ -7,6 +7,7 @@ debug/logindialog.o
 debug/main.o
 debug/mainwindow.o
 debug/menuwidget.o
+debug/order.o
 debug/restaurant.o
 debug/restaurantlistwidget.o
 debug/restaurantowner.o

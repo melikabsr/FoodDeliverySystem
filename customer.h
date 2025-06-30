@@ -2,6 +2,7 @@
 #define CUSTOMER_H
 
 #include "User.h"
+#include <enums.h>
 
 class Customer : public User {
 public:

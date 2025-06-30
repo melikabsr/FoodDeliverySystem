@@ -15,13 +15,14 @@ private:
     QString imagePath;
 
 public:
-    Food(int id,
-         const QString& name,
-         const QString& description,
-         double price,
-         FoodCategory category,
-         const QString& imagePath = "");
+    Food();
+    Food(int id, const QString& name, const QString& description,
+         double price, FoodCategory category, const QString& imagePath);
 
+    // Copy constructor (برای استفاده در QMap/QPair)
+    Food(const Food& other);
+
+    // Getters
     int getId() const;
     QString getName() const;
     QString getDescription() const;
@@ -31,3 +32,4 @@ public:
 };
 
 #endif // FOOD_H
+

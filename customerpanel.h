@@ -5,6 +5,7 @@
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
+#include <enums.h>
 
 class CustomerPanel : public QWidget
 {

@@ -1,34 +1,38 @@
-#ifndef MENUWIDGET_H
-#define MENUWIDGET_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
-#include <QWidget>
+#include <QMainWindow>
+#include <QMenuBar>
+#include <QMenu>
+#include <QAction>
 #include <QVBoxLayout>
-#include <QLabel>
-#include <QPushButton>
+#include "LoginDialog.h"
+#include "User.h"
+#include "CustomerPanel.h"
 #include "Restaurant.h"
 
-class MenuWidget : public QWidget
+class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    explicit MenuWidget(const Restaurant& restaurant, QWidget *parent = nullptr);
     explicit MainWindow(QWidget *parent = nullptr);
-signals:
-    void foodAdded(const Food& food);
-
-private:
-    QVBoxLayout* layout;
-    void loadMenu(const QList<Food>& menu);
+    ~MainWindow();
 
 private slots:
     void onLoginClicked();
     void onExitClicked();
 
+private:
+    QWidget* centralWidget;
+    QVBoxLayout* mainLayout;
+    QMenuBar* menuBar;
+    QMenu* fileMenu;
+    QAction* loginAction;
+    QAction* exitAction;
 };
 
-#endif // MENUWIDGET_H
-
+#endif // MAINWINDOW_H
 
 
 
