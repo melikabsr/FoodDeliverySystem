@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QMap>
+#include <QString>
 
 class UserDatabase : public QObject
 {
@@ -21,3 +22,6 @@ private:
 };
 
 #endif // USERDATABASE_H
+
+
+

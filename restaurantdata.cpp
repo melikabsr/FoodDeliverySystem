@@ -53,3 +53,13 @@ QString RestaurantData::serializeRestaurants() const
     }
     return list.join(";");
 }
+
+
+
+const Restaurant* RestaurantData::getRestaurantById(int id) const {
+    for (const Restaurant& r : restaurants) {
+        if (r.getId() == id)
+            return &r;
+    }
+    return nullptr;
+}

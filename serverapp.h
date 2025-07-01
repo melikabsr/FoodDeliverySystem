@@ -11,7 +11,7 @@ class ServerApp : public QObject
 public:
     explicit ServerApp(QObject *parent = nullptr);
     void startServer(quint16 port = 1234);
-
+    void handleGetMenu(QTcpSocket* client, const QList<QString>& parts);
 private slots:
     void onNewConnection();
     void onClientDisconnected();
@@ -20,7 +20,7 @@ private slots:
 private:
     QTcpServer* server;
     QMap<QTcpSocket*, QString> clientUsernames;
-    void handleGetMenu(QTcpSocket* client, const QStringList& parts);
+
 
     void handleMessage(QTcpSocket* client, const QString& message);
     void handleLogin(QTcpSocket* client, const QStringList& parts);

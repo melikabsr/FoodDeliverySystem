@@ -1,22 +1,34 @@
 #ifndef ORDERMANAGER_H
 #define ORDERMANAGER_H
 
-#include <QDialog>
+#include <QObject>
+#include <QVector>
+#include <QMap>
+#include "Food.h"
 
-namespace Ui {
-class OrderManager;
-}
+struct Order
+{
+    int id;
+    QString username;
+    QMap<int, QPair<Food, int>> items; // key = foodId, value = (food, quantity)
+};
 
-class OrderManager : public QDialog
+class OrderManager : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit OrderManager(QWidget *parent = nullptr);
-    ~OrderManager();
+    static OrderManager& instance();
+
+    void addOrder(const Order& order);
+    QVector<Order> getOrdersForUser(const QString& username) const;
+    QVector<Order> getAllOrders() const;
+    void removeOrder(int id);
+    int generateNewId() const;
 
 private:
-    Ui::OrderManager *ui;
+    explicit OrderManager(QObject* parent = nullptr);
+    QVector<Order> orders;
 };
 
 #endif // ORDERMANAGER_H

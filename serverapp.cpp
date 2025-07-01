@@ -57,10 +57,10 @@ void ServerApp::handleMessage(QTcpSocket* client, const QString& message)
         handleGetRestaurants(client);
     } else if (command == "ADD_ORDER") {
         handleAddOrder(client, parts);
-    } else if {
-        client->write("❓ Unknown command\n");
-    } else (command == "GET_MENU") {
+    }else if  (command == "GET_MENU") {
         handleGetMenu(client, parts);
+    } else  {
+        client->write("❓ Unknown command\n");
     }
 
 }
@@ -92,4 +92,31 @@ void ServerApp::handleGetRestaurants(QTcpSocket* client)
 void ServerApp::handleAddOrder(QTcpSocket* client, const QStringList& parts)
 {
     client->write("🛒 ADD_ORDER|Feature under development\n");
+}
+
+
+#include "restaurantdata.h"  // اطمینان از این که RestaurantData قابل دسترس است
+
+void ServerApp::handleGetMenu(QTcpSocket* client, const QList<QString>& parts)
+{
+    if (parts.size() < 2) {
+        client->write("❌ Missing restaurant ID.\n");
+        return;
+    }
+
+    bool ok;
+    int restaurantId = parts[1].toInt(&ok);
+    if (!ok) {
+        client->write("❌ Invalid restaurant ID format.\n");
+        return;
+    }
+
+    const Restaurant* r = RestaurantData::instance().getRestaurantById(restaurantId);
+    if (!r) {
+        client->write("❌ Restaurant not found.\n");
+        return;
+    }
+
+    QString serializedMenu = r->serializeMenu();
+    client->write(QString("✅ MENU|%1\n").arg(serializedMenu).toUtf8());
 }

@@ -11,6 +11,7 @@ class RestaurantData : public QObject
 
 public:
     static RestaurantData& instance();
+    const Restaurant* getRestaurantById(int id) const;
 
     void addRestaurant(const Restaurant& restaurant);
     void removeRestaurant(int id);

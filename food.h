@@ -1,22 +1,24 @@
 #ifndef FOOD_H
 #define FOOD_H
 
-#include <QDialog>
+#include <QString>
 
-namespace Ui {
-class Food;
-}
-
-class Food : public QDialog
+class Food
 {
-    Q_OBJECT
-
 public:
-    explicit Food(QWidget *parent = nullptr);
-    ~Food();
+    Food();
+    Food(int id, const QString& name, double price, const QString& description);
+
+    int getId() const;
+    QString getName() const;
+    double getPrice() const;
+    QString getDescription() const;
 
 private:
-    Ui::Food *ui;
+    int id;
+    QString name;
+    double price;
+    QString description;
 };
 
 #endif // FOOD_H
