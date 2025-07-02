@@ -10,6 +10,7 @@ CONFIG += c++17
 
 SOURCES += \
     clienthandler.cpp \
+    dialog.cpp \
     food.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -17,26 +18,31 @@ SOURCES += \
     restaurant.cpp \
     restaurantdata.cpp \
     serverapp.cpp \
+    serverorder.cpp \
     userdatabase.cpp
 
 HEADERS += \
     clienthandler.h \
+    dialog.h \
     food.h \
     mainwindow.h \
     ordermanager.h \
     restaurant.h \
     restaurantdata.h \
     serverapp.h \
+    serverorder.h \
     userdatabase.h
 
 FORMS += \
     clienthandler.ui \
+    dialog.ui \
     food.ui \
     mainwindow.ui \
     ordermanager.ui \
     restaurant.ui \
     restaurantdata.ui \
     serverapp.ui \
+    serverorder.ui \
     userdatabase.ui
 
 # Default rules for deployment.

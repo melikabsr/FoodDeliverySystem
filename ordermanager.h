@@ -5,13 +5,13 @@
 #include <QVector>
 #include <QMap>
 #include "Food.h"
-
-struct Order
-{
-    int id;
-    QString username;
-    QMap<int, QPair<Food, int>> items; // key = foodId, value = (food, quantity)
-};
+#include "ServerOrder.h"
+// struct Order
+// {
+//     int id;
+//     QString username;
+//     QMap<int, QPair<Food, int>> items;
+// };
 
 class OrderManager : public QObject
 {
@@ -20,15 +20,16 @@ class OrderManager : public QObject
 public:
     static OrderManager& instance();
 
-    void addOrder(const Order& order);
-    QVector<Order> getOrdersForUser(const QString& username) const;
-    QVector<Order> getAllOrders() const;
+    QVector<ServerOrder> getOrdersForCustomer(const QString& username) const;
+    QVector<ServerOrder> getAllOrders() const;
     void removeOrder(int id);
     int generateNewId() const;
+    void addOrder(const ServerOrder& order) ;
 
 private:
     explicit OrderManager(QObject* parent = nullptr);
-    QVector<Order> orders;
+    QVector<ServerOrder> orders;
 };
 
 #endif // ORDERMANAGER_H
+

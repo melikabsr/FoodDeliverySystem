@@ -1,7 +1,7 @@
 #include "ServerApp.h"
 #include "UserDatabase.h"
 #include "RestaurantData.h"
-
+ #include <QTcpServer>
 #include <QDebug>
 
 ServerApp::ServerApp(QObject *parent)
@@ -119,4 +119,17 @@ void ServerApp::handleGetMenu(QTcpSocket* client, const QList<QString>& parts)
 
     QString serializedMenu = r->serializeMenu();
     client->write(QString("✅ MENU|%1\n").arg(serializedMenu).toUtf8());
+}
+
+
+
+bool ServerApp::start(quint16 port)
+{
+    if (!tcpServer->listen(QHostAddress::Any, port)) {
+        qCritical() << "❌ Server failed to start on port" << port << ":" << tcpServer->errorString();
+        return false;
+    }
+
+    qDebug() << "✅ Server started successfully on port" << port;
+    return true;
 }

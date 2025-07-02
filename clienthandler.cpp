@@ -3,6 +3,12 @@
 #include "restaurantdata.h"
 #include <QTextStream>
 #include <QDebug>
+#include <QtCompare>
+#include "ServerOrder.h"
+#include "OrderManager.h"
+
+//#include "order.h"
+#include "ordermanager.h"
 
 ClientHandler::ClientHandler(QTcpSocket* socket, QObject* parent)
     : QThread(parent), socket(socket)
@@ -41,6 +47,8 @@ void ClientHandler::processMessage(const QString& msg)
         handleGetMenu(parts);
     } else if (command == "ADD_ORDER") {
         handleAddOrder(parts);
+    }else if (command == "GET_ORDERS") {
+        handleGetOrders(parts);
     }else {
         socket->write("❓ Unknown command\n");
     }
@@ -96,7 +104,6 @@ void ClientHandler::handleGetMenu(const QStringList& parts)
 
 
 
-
 void ClientHandler::handleAddOrder(const QStringList& parts)
 {
     if (parts.size() < 4) {
@@ -125,8 +132,9 @@ void ClientHandler::handleAddOrder(const QStringList& parts)
         return;
     }
 
-    Order newOrder(OrderManager::instance().getAllOrders().size() + 1, user);
+    ServerOrder newOrder(OrderManager::instance().generateNewId(), user);
 
+    const QList<Food>& menu = r->getMenu();
     for (const QString& token : itemTokens) {
         QStringList pair = token.split(":");
         if (pair.size() != 2) continue;
@@ -134,7 +142,6 @@ void ClientHandler::handleAddOrder(const QStringList& parts)
         QString foodName = pair[0];
         int qty = pair[1].toInt();
 
-        const QList<Food>& menu = r->getMenu();
         for (const Food& f : menu) {
             if (f.getName() == foodName) {
                 newOrder.addItem(f, qty);
@@ -147,3 +154,37 @@ void ClientHandler::handleAddOrder(const QStringList& parts)
     socket->write("✅ ADD_ORDER|Order registered\n");
 }
 
+void ClientHandler::handleGetOrders(const QStringList& parts)
+{
+    if (parts.size() < 2) {
+        socket->write("❌ GET_ORDERS|Missing username\n");
+        return;
+    }
+
+    QString username = parts[1];
+    const QVector<ServerOrder> userOrders = OrderManager::instance().getOrdersForCustomer(username);
+
+    if (userOrders.isEmpty()) {
+        socket->write("ORDERS|No orders found\n");
+        return;
+    }
+
+    QStringList serialized;
+    for (const ServerOrder& order : userOrders) {
+        QStringList itemsStr;
+        for (const auto& pair : order.getItems()) {
+            const Food& food = pair.first;
+            int qty = pair.second;
+            itemsStr << QString("%1×%2").arg(food.getName()).arg(qty);
+        }
+
+        QString info = QString("🧾 Order #%1 - Total: %2 تومان - [%3]")
+                           .arg(order.getId())
+                           .arg(order.getTotalAmount())
+                           .arg(itemsStr.join(", "));
+        serialized << info;
+    }
+
+    QString final = "ORDERS|" + serialized.join(";");
+    socket->write((final + "\n").toUtf8());
+}

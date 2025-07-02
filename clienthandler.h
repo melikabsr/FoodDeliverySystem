@@ -15,6 +15,7 @@ private:
     QTcpSocket* socket;
     QString username;
     void handleAddOrder(const QStringList& parts);
+    void handleGetOrders(const QStringList& parts);
 
     void processMessage(const QString& msg);
     void handleLogin(const QStringList& parts);

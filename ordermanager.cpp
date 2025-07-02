@@ -1,50 +1,54 @@
 #include "OrderManager.h"
-
+//#include "order.h"
 OrderManager::OrderManager(QObject* parent)
     : QObject(parent) {}
 
-OrderManager& OrderManager::instance()
-{
-    static OrderManager manager;
-    return manager;
+
+OrderManager& OrderManager::instance() {
+    static OrderManager instance;
+    return instance;
 }
 
-void OrderManager::addOrder(const Order& order)
-{
+void OrderManager::addOrder(const ServerOrder& order) {
     orders.append(order);
 }
 
-QVector<Order> OrderManager::getOrdersForUser(const QString& username) const
-{
-    QVector<Order> result;
-    for (const Order& o : orders) {
-        if (o.username == username)
-            result.append(o);
-    }
-    return result;
-}
 
-QVector<Order> OrderManager::getAllOrders() const
-{
-    return orders;
-}
-
-void OrderManager::removeOrder(int id)
-{
+void OrderManager::removeOrder(int id) {
     for (int i = 0; i < orders.size(); ++i) {
-        if (orders[i].id == id) {
+        if (orders[i].getId() == id) {
             orders.removeAt(i);
-            break;
+            return;
         }
     }
 }
 
-int OrderManager::generateNewId() const
-{
-    int maxId = 0;
-    for (const auto& o : orders) {
-        if (o.id > maxId)
-            maxId = o.id;
-    }
-    return maxId + 1;
+int OrderManager::generateNewId() const {
+    return orders.size() + 1;
 }
+
+
+
+
+
+QVector<ServerOrder> OrderManager::getOrdersForCustomer(const QString& username) const {
+    QVector<ServerOrder> result;
+    for (const ServerOrder& order : orders) {
+        if (order.getCustomerUsername() == username) {
+            result.append(order);
+        }
+    }
+    return result;
+}
+
+QVector<ServerOrder> OrderManager::getAllOrders() const {
+    return orders;
+}
+
+
+
+
+
+
+
+
