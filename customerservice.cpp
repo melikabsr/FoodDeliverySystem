@@ -66,3 +66,4 @@ void CustomerService::removeUser(const QString& username)
         }
     }
 }
+

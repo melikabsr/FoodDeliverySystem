@@ -14,6 +14,7 @@ class AddFoodDialog : public QDialog
     Q_OBJECT
 
 public:
+     //explicit AddFoodDialog(Restaurant& restRef, QWidget* parent = nullptr);
     explicit AddFoodDialog(QWidget *parent = nullptr);
     Food getNewFood() const;
 
@@ -32,4 +33,8 @@ private:
 };
 
 #endif // ADD_FOOD_DIALOG_H
+
+
+
+
 

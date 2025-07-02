@@ -42,7 +42,7 @@ CustomerPanel::CustomerPanel(QWidget *parent)
 
     connect(logoutButton, &QPushButton::clicked, []() {
         QMessageBox::information(nullptr, "Logout", "Logging out...");
-        qApp->exit(); // موقت
+        qApp->exit(); // موقتی
     });
 }
 

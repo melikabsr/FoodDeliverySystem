@@ -18,6 +18,7 @@ public:
     Restaurant(int id, const QString& name, const QString& address);
 
     int getId() const;
+
     QString getName() const;
     QString getAddress() const;
     QList<Food> getMenu() const;

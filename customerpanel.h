@@ -23,6 +23,7 @@ private:
     QPushButton* viewCartButton;
     QPushButton* viewOrdersButton;
     QPushButton* logoutButton;
+    QPushButton* historyBtn ;
 };
 
 #endif // CUSTOMERPANEL_H
