@@ -4,37 +4,37 @@
 #include "RestaurantListWidget.h"
 #include "ShoppingCartWidget.h"
 #include "OrderHistoryWidget.h"
-
-CustomerPanel::CustomerPanel(QWidget *parent)
-    : QWidget(parent)
+#include "ClientDatabaseManager.h"
+CustomerPanel::CustomerPanel(ClientNetwork* net, const QString& username, QWidget *parent)
+    : QWidget(parent), network(net), username(username)
 {
-    QVBoxLayout* layout = new QVBoxLayout(this);
+    mainLayout = new QVBoxLayout(this);
 
     welcomeLabel = new QLabel("🍽️ Welcome, dear customer!", this);
     welcomeLabel->setAlignment(Qt::AlignCenter);
+    mainLayout->addWidget(welcomeLabel);
 
-    viewRestaurantsButton = new QPushButton("Browse Restaurants");
-    viewCartButton = new QPushButton("View Shopping Cart");
+    orderListWidget = new QListWidget(this);
+    mainLayout->addWidget(orderListWidget);
+
+    viewRestaurantsButton = new QPushButton("📋 Browse Restaurants");
+    viewCartButton = new QPushButton("🛒 View Shopping Cart");
     viewOrdersButton = new QPushButton("📜 View Order History");
-    logoutButton = new QPushButton("Logout");
+    logoutButton = new QPushButton("🚪 Logout");
 
-    layout->addWidget(welcomeLabel);
-    layout->addWidget(viewRestaurantsButton);
-    layout->addWidget(viewCartButton);
-    layout->addWidget(viewOrdersButton);
-    layout->addWidget(logoutButton);
+    mainLayout->addWidget(viewRestaurantsButton);
+    mainLayout->addWidget(viewCartButton);
+    mainLayout->addWidget(viewOrdersButton);
+    mainLayout->addWidget(logoutButton);
 
-    connect(viewRestaurantsButton, &QPushButton::clicked, [this]() {
-        auto* listWidget = new RestaurantListWidget();
-        listWidget->setWindowTitle("Available Restaurants");
-        listWidget->resize(400, 400);
+    // اتصال سیگنال‌ها
+    connect(viewRestaurantsButton, &QPushButton::clicked, [=]() {
+        auto* listWidget = new RestaurantListWidget(network, username);
         listWidget->show();
     });
 
     connect(viewCartButton, &QPushButton::clicked, [=]() {
-        auto* cart = new ShoppingCartWidget();
-        cart->setWindowTitle("🛒 Your Cart");
-        cart->resize(400, 400);
+        auto* cart = new ShoppingCartWidget(network, username);
         cart->show();
     });
 
@@ -42,14 +42,31 @@ CustomerPanel::CustomerPanel(QWidget *parent)
 
     connect(logoutButton, &QPushButton::clicked, []() {
         QMessageBox::information(nullptr, "Logout", "Logging out...");
-        qApp->exit(); // موقتی
+        qApp->exit();
     });
 }
 
 void CustomerPanel::showOrderHistory()
 {
-    auto* history = new OrderHistoryWidget();
+    auto* history = new OrderHistoryWidget(network, username);
     history->setWindowTitle("📜 Order History");
     history->resize(450, 500);
     history->show();
+}
+
+
+
+
+
+void CustomerPanel::refreshOrders()
+{
+    orderListWidget->clear();
+    QList<QMap<QString, QVariant>> orders = ClientDatabaseManager::instance().getAllOrders();
+    for (const auto& order : orders) {
+        QString text = QString("سفارش #%1 - %2 تومان\nاقلام: %3")
+                           .arg(order["id"].toInt())
+                           .arg(order["total"].toDouble())
+                           .arg(order["items"].toString());
+        orderListWidget->addItem(text);
+    }
 }

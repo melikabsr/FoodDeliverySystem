@@ -1,13 +1,12 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'DebugTestWindow.h'
+** Meta object code from reading C++ file 'dialog.h'
 **
 ** Created by: The Qt Meta Object Compiler version 69 (Qt 6.10.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../DebugTestWindow.h"
-#include <QtGui/qtextcursor.h>
+#include "../../../dialog.h"
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -17,7 +16,7 @@
 
 #include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'DebugTestWindow.h' doesn't include <QObject>."
+#error "The header file 'dialog.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 69
 #error "This file was generated using the moc from 6.10.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -32,14 +31,14 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 QT_WARNING_DISABLE_GCC("-Wuseless-cast")
 namespace {
-struct qt_meta_tag_ZN15DebugTestWindowE_t {};
+struct qt_meta_tag_ZN6DialogE_t {};
 } // unnamed namespace
 
-template <> constexpr inline auto DebugTestWindow::qt_create_metaobjectdata<qt_meta_tag_ZN15DebugTestWindowE_t>()
+template <> constexpr inline auto Dialog::qt_create_metaobjectdata<qt_meta_tag_ZN6DialogE_t>()
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "DebugTestWindow"
+        "Dialog"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -48,44 +47,44 @@ template <> constexpr inline auto DebugTestWindow::qt_create_metaobjectdata<qt_m
     };
     QtMocHelpers::UintData qt_enums {
     };
-    return QtMocHelpers::metaObjectData<DebugTestWindow, qt_meta_tag_ZN15DebugTestWindowE_t>(QMC::MetaObjectFlag{}, qt_stringData,
+    return QtMocHelpers::metaObjectData<Dialog, qt_meta_tag_ZN6DialogE_t>(QMC::MetaObjectFlag{}, qt_stringData,
             qt_methods, qt_properties, qt_enums);
 }
-Q_CONSTINIT const QMetaObject DebugTestWindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QWidget::staticMetaObject>(),
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15DebugTestWindowE_t>.stringdata,
-    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15DebugTestWindowE_t>.data,
+Q_CONSTINIT const QMetaObject Dialog::staticMetaObject = { {
+    QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6DialogE_t>.stringdata,
+    qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6DialogE_t>.data,
     qt_static_metacall,
     nullptr,
-    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN15DebugTestWindowE_t>.metaTypes,
+    qt_staticMetaObjectRelocatingContent<qt_meta_tag_ZN6DialogE_t>.metaTypes,
     nullptr
 } };
 
-void DebugTestWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void Dialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
-    auto *_t = static_cast<DebugTestWindow *>(_o);
+    auto *_t = static_cast<Dialog *>(_o);
     (void)_t;
     (void)_c;
     (void)_id;
     (void)_a;
 }
 
-const QMetaObject *DebugTestWindow::metaObject() const
+const QMetaObject *Dialog::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *DebugTestWindow::qt_metacast(const char *_clname)
+void *Dialog::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN15DebugTestWindowE_t>.strings))
+    if (!strcmp(_clname, qt_staticMetaObjectStaticContent<qt_meta_tag_ZN6DialogE_t>.strings))
         return static_cast<void*>(this);
-    return QWidget::qt_metacast(_clname);
+    return QDialog::qt_metacast(_clname);
 }
 
-int DebugTestWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int Dialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QDialog::qt_metacall(_c, _id, _a);
     return _id;
 }
 QT_WARNING_POP

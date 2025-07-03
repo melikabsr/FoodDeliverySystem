@@ -67,5 +67,6 @@ void AddFoodDialog::submit()
 
 Food AddFoodDialog::getNewFood() const
 {
-    return newFood;
+    // return newFood;
+    return createdFood;
 }

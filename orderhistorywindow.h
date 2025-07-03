@@ -20,6 +20,7 @@ private:
     ClientNetwork* network;
     QString user;
     QListWidget* listWidget;
+     QListWidget* list;
 };
 
 #endif // ORDERHISTORYWINDOW_H

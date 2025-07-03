@@ -6,6 +6,9 @@
 
 class Customer : public User {
 public:
+
+
+    explicit Customer(const QString& username) : User(username, Role::Customer) {}
     Customer(const QString& username,
              const QString& password,
              const QString& email);

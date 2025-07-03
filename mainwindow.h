@@ -10,7 +10,8 @@
 #include "User.h"
 #include "CustomerPanel.h"
 #include "Restaurant.h"
-
+#include "ClientNetwork.h"
+#include <QLabel>
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -18,21 +19,23 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void showWelcomeScreen();
 
 private slots:
     void onLoginClicked();
     void onExitClicked();
+    void onMessageReceived(const QString& msg);  // ✅ حالا تعریف شده
 
 private:
-    QWidget* centralWidget;
+
     QVBoxLayout* mainLayout;
     QMenuBar* menuBar;
     QMenu* fileMenu;
     QAction* loginAction;
     QAction* exitAction;
+    ClientNetwork* network;
+    QLabel* statusLabel;
+    QString username;
 };
 
 #endif // MAINWINDOW_H
-
-
-

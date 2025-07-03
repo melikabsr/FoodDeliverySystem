@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QTcpSocket>
 #include <QStringList>
+#include "Food.h"
 
 class ClientNetwork : public QObject
 {
@@ -18,6 +19,8 @@ signals:
     void messageReceived(const QString& message);
     void disconnected();
     void errorOccurred(const QString& error);
+    void ordersUpdated();
+    void menuReceived(const QList<Food>& menu);  // برای منوی رستوران
 
 private slots:
     void onReadyRead();
@@ -26,6 +29,8 @@ private slots:
 
 private:
     QTcpSocket* socket;
+    QList<Food> parseMenuMessage(const QString& rawData);
+    QList<Food> parseMenu(const QString& data);
 };
 
 #endif // CLIENTNETWORK_H

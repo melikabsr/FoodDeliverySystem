@@ -18,6 +18,7 @@ public:
     Order* getOrderById(int id);
     void removeOrder(int orderId);
 
+
 private:
     explicit OrderManager(QObject* parent = nullptr);
     QVector<Order> orders;

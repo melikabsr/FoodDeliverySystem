@@ -8,6 +8,7 @@
 
 #include "../../../clientnetwork.h"
 #include <QtCore/qmetatype.h>
+#include <QtCore/QList>
 
 #include <QtCore/qtmochelpers.h>
 
@@ -45,6 +46,10 @@ template <> constexpr inline auto ClientNetwork::qt_create_metaobjectdata<qt_met
         "disconnected",
         "errorOccurred",
         "error",
+        "ordersUpdated",
+        "menuReceived",
+        "QList<Food>",
+        "menu",
         "onReadyRead",
         "onDisconnected",
         "onErrorOccurred",
@@ -63,13 +68,19 @@ template <> constexpr inline auto ClientNetwork::qt_create_metaobjectdata<qt_met
         QtMocHelpers::SignalData<void(const QString &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::QString, 6 },
         }}),
+        // Signal 'ordersUpdated'
+        QtMocHelpers::SignalData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        // Signal 'menuReceived'
+        QtMocHelpers::SignalData<void(const QList<Food> &)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 9, 10 },
+        }}),
         // Slot 'onReadyRead'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onDisconnected'
-        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onErrorOccurred'
-        QtMocHelpers::SlotData<void(QAbstractSocket::SocketError)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 10, 11 },
+        QtMocHelpers::SlotData<void(QAbstractSocket::SocketError)>(13, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { 0x80000000 | 14, 15 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -97,16 +108,18 @@ void ClientNetwork::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         case 0: _t->messageReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         case 1: _t->disconnected(); break;
         case 2: _t->errorOccurred((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
-        case 3: _t->onReadyRead(); break;
-        case 4: _t->onDisconnected(); break;
-        case 5: _t->onErrorOccurred((*reinterpret_cast< std::add_pointer_t<QAbstractSocket::SocketError>>(_a[1]))); break;
+        case 3: _t->ordersUpdated(); break;
+        case 4: _t->menuReceived((*reinterpret_cast< std::add_pointer_t<QList<Food>>>(_a[1]))); break;
+        case 5: _t->onReadyRead(); break;
+        case 6: _t->onDisconnected(); break;
+        case 7: _t->onErrorOccurred((*reinterpret_cast< std::add_pointer_t<QAbstractSocket::SocketError>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 5:
+        case 7:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
@@ -121,6 +134,10 @@ void ClientNetwork::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _i
         if (QtMocHelpers::indexOfMethod<void (ClientNetwork::*)()>(_a, &ClientNetwork::disconnected, 1))
             return;
         if (QtMocHelpers::indexOfMethod<void (ClientNetwork::*)(const QString & )>(_a, &ClientNetwork::errorOccurred, 2))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ClientNetwork::*)()>(_a, &ClientNetwork::ordersUpdated, 3))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (ClientNetwork::*)(const QList<Food> & )>(_a, &ClientNetwork::menuReceived, 4))
             return;
     }
 }
@@ -144,14 +161,14 @@ int ClientNetwork::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 6)
+        if (_id < 8)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 6;
+        _id -= 8;
     }
     return _id;
 }
@@ -172,5 +189,17 @@ void ClientNetwork::disconnected()
 void ClientNetwork::errorOccurred(const QString & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 2, nullptr, _t1);
+}
+
+// SIGNAL 3
+void ClientNetwork::ordersUpdated()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+}
+
+// SIGNAL 4
+void ClientNetwork::menuReceived(const QList<Food> & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 4, nullptr, _t1);
 }
 QT_WARNING_POP

@@ -14,127 +14,136 @@
 #include <QApplication>
 
 
-
-/*
-MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent)
-{
-    setWindowTitle("Food Delivery System 🍽️");
-
-    // ایجاد منو
-    QMenuBar* menuBar = new QMenuBar(this);
-    QMenu* fileMenu = menuBar->addMenu("File");
-
-    QAction* loginAction = new QAction("Login", this);
-    QAction* exitAction = new QAction("Exit", this);
-
-    fileMenu->addAction(loginAction);
-    fileMenu->addAction(exitAction);
-
-    setMenuBar(menuBar);
-
-    // کانکشن‌ها
-    connect(loginAction, &QAction::triggered, this, &MainWindow::onLoginClicked);
-    connect(exitAction, &QAction::triggered, this, &MainWindow::onExitClicked);
-
-    // محتوا
-    QWidget* centralWidget = new QWidget(this);
-    QVBoxLayout* layout = new QVBoxLayout(centralWidget);
-   QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
-    welcomeLabel->setAlignment(Qt::AlignCenter);
-    layout->addWidget(welcomeLabel);
-    mainLayout = new QVBoxLayout();
-    mainLayout->addWidget(welcomeLabel);
-
-    centralWidget->setLayout(mainLayout);
-    setCentralWidget(centralWidget);
-
-}
-
-*/
-
-
-#include "MainWindow.h"
-#include <QLabel>
+#include <QDebug>
 #include <QMessageBox>
-#include <QVBoxLayout>
 #include "LoginDialog.h"
-#include "CustomerService.h"
 #include "CustomerPanel.h"
-#include "RestaurantOwnerPanel.h"
-#include "AdminPanel.h"
-#include <QApplication>
+#include "MainWindow.h"
+#include "ClientNetwork.h"
+#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("🍽️ سامانه سفارش غذای آنلاین");
+    setWindowTitle("سامانه سفارش غذای آنلاین");
+
+    // ساخت اتصال شبکه
+    network = new ClientNetwork(this);
+    if (!network->connectToServer("127.0.0.1", 1234)) {
+        QMessageBox::critical(this, "اتصال ناموفق", "ارتباط با سرور برقرار نشد.");
+    }
 
     // نوار منو
     menuBar = new QMenuBar(this);
-    fileMenu = menuBar->addMenu("گزینه‌ها");
+    fileMenu = menuBar->addMenu("File");
 
-    loginAction = new QAction("ورود به سیستم", this);
-    exitAction = new QAction("خروج", this);
+    loginAction = new QAction("Login", this);
+    exitAction = new QAction("Exit", this);
 
     fileMenu->addAction(loginAction);
     fileMenu->addAction(exitAction);
     setMenuBar(menuBar);
 
-    // اتصال اکشن‌ها
     connect(loginAction, &QAction::triggered, this, &MainWindow::onLoginClicked);
     connect(exitAction, &QAction::triggered, this, &MainWindow::onExitClicked);
 
-    // متن خوش‌آمدگویی
-    centralWidget = new QWidget(this);
-    mainLayout = new QVBoxLayout(centralWidget);
+    // ایجاد ویجت مرکزی و تنظیم آن
+    QWidget* mainWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(mainWidget);
 
-    QLabel* welcomeLabel = new QLabel("✨ به سامانه سفارش غذا خوش آمدید");
+    QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
     welcomeLabel->setAlignment(Qt::AlignCenter);
-    welcomeLabel->setStyleSheet("font-size: 18px; font-weight: bold;");
+    layout->addWidget(welcomeLabel);
 
-    mainLayout->addWidget(welcomeLabel);
-    centralWidget->setLayout(mainLayout);
-    setCentralWidget(centralWidget);
+    statusLabel = new QLabel(this);
+    statusLabel->setAlignment(Qt::AlignCenter);
+    statusLabel->setStyleSheet("color: green; font-weight: bold; font-size: 14px;");
+    layout->addWidget(statusLabel);
+
+    mainWidget->setLayout(layout);
+    setCentralWidget(mainWidget);
 }
 
 MainWindow::~MainWindow() {}
-
-void MainWindow::onLoginClicked()
+void MainWindow::onMessageReceived(const QString& msg)
 {
-    LoginDialog dialog(this);
-    if (dialog.exec() == QDialog::Accepted) {
-        auto user = dialog.getLoggedInUser();
-        if (!user) {
-            QMessageBox::warning(this, "ورود ناموفق", "کاربری وارد نشد.");
-            return;
+    QStringList parts = msg.split("|");
+    if (parts.size() >= 3 && parts[0] == "LOGIN_RESULT" && parts[1] == "SUCCESS") {
+        QString role = parts[2].trimmed().toUpper();
+        statusLabel->setText("✅ Login successful!");
+
+        if (role == "CUSTOMER") {
+            auto* panel = new CustomerPanel(network, username);
+            connect(network, &ClientNetwork::ordersUpdated,
+                    panel, &CustomerPanel::refreshOrders);
+            setCentralWidget(panel);
         }
 
-        // CustomerService::instance().setCurrentUser(user);
-        CustomerService::instance().setCurrentUser(std::shared_ptr<User>(std::move(user)));
-        QWidget* nextPanel = nullptr;
-        switch (user->getUserType()) {
-        case UserType::CUSTOMER:
-            nextPanel = new CustomerPanel();
-            break;
-        case UserType::RESTAURANT_OWNER:
-            nextPanel = new RestaurantOwnerPanel();
-            break;
-        case UserType::ADMIN:
-            nextPanel = new AdminPanel();
-            break;
-        default:
-            QMessageBox::warning(this, "خطا", "نوع کاربر نامشخص است.");
-            return;
+        else if (role == "RESTAURANT_OWNER") {
+            if (parts.size() >= 4) {
+                int restaurantId = parts[3].toInt();
+                auto* panel = new RestaurantOwnerPanel(network, restaurantId);
+                connect(network, &ClientNetwork::ordersUpdated,
+                        panel, &RestaurantOwnerPanel::refreshOrders);
+                setCentralWidget(panel);
+            } else {
+                QMessageBox::warning(this, "Login Error", "Restaurant ID not provided by server.");
+            }
         }
 
-        if (nextPanel) {
-            setCentralWidget(nextPanel);
+        else {
+            QMessageBox::warning(this, "Login Error", "Unknown role received from server.");
         }
+
+    }
+    else {
+        statusLabel->setText("❌ " + msg);
     }
 }
 
+
 void MainWindow::onExitClicked()
 {
-    QApplication::quit();
+    qApp->quit();
+}
+
+
+void MainWindow::showWelcomeScreen()
+{
+    // حذف ویجت قبلی برای جلوگیری از memory leak
+    QWidget* oldWidget = centralWidget();
+    if (oldWidget)
+        oldWidget->deleteLater();
+
+    QWidget* welcomeWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(welcomeWidget);
+
+    QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
+    welcomeLabel->setAlignment(Qt::AlignCenter);
+    layout->addWidget(welcomeLabel);
+
+    statusLabel = new QLabel(this);
+    statusLabel->setAlignment(Qt::AlignCenter);
+    statusLabel->setStyleSheet("color: green; font-weight: bold; font-size: 14px;");
+    layout->addWidget(statusLabel);
+
+    welcomeWidget->setLayout(layout);
+    setCentralWidget(welcomeWidget);
+}
+
+
+void MainWindow::onLoginClicked()
+{
+    LoginDialog loginDialog(network, this);  // ✅ درست
+     // فرض بر اینکه network از قبل ساخته شده
+    if (loginDialog.exec() == QDialog::Accepted) {
+        username = loginDialog.getUsername();  // ✅ اینجا ذخیره کن
+        QString password = loginDialog.getPassword();
+        QString role = loginDialog.getRole();
+
+        connect(network, &ClientNetwork::messageReceived,
+                this, &MainWindow::onMessageReceived);
+
+        network->sendMessage(QString("LOGIN|%1|%2|%3").arg(username, password, role));
+    }
 }

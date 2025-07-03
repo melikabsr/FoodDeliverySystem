@@ -7,7 +7,6 @@
 *****************************************************************************/
 
 #include "../../../menuwidget.h"
-#include <QtGui/qtextcursor.h>
 #include <QtCore/qmetatype.h>
 
 #include <QtCore/qtmochelpers.h>
@@ -43,12 +42,17 @@ template <> constexpr inline auto MenuWidget::qt_create_metaobjectdata<qt_meta_t
         "foodAdded",
         "",
         "Food",
-        "food"
+        "food",
+        "foodRemoved"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'foodAdded'
         QtMocHelpers::SignalData<void(const Food &)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 3, 4 },
+        }}),
+        // Signal 'foodRemoved'
+        QtMocHelpers::SignalData<void(const Food &)>(5, 2, QMC::AccessPublic, QMetaType::Void, {{
             { 0x80000000 | 3, 4 },
         }}),
     };
@@ -75,11 +79,14 @@ void MenuWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->foodAdded((*reinterpret_cast< std::add_pointer_t<Food>>(_a[1]))); break;
+        case 1: _t->foodRemoved((*reinterpret_cast< std::add_pointer_t<Food>>(_a[1]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (MenuWidget::*)(const Food & )>(_a, &MenuWidget::foodAdded, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (MenuWidget::*)(const Food & )>(_a, &MenuWidget::foodRemoved, 1))
             return;
     }
 }
@@ -103,14 +110,14 @@ int MenuWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -119,5 +126,11 @@ int MenuWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void MenuWidget::foodAdded(const Food & _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void MenuWidget::foodRemoved(const Food & _t1)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1);
 }
 QT_WARNING_POP

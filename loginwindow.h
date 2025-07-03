@@ -14,6 +14,10 @@ class LoginWindow : public QWidget
 
 public:
     explicit LoginWindow(QWidget* parent = nullptr);
+    QString getUsername() const;
+    QString getPassword() const;
+    QString getRole() const;
+
 
 private slots:
     void onLoginClicked();

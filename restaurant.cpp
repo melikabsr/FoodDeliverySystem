@@ -45,4 +45,16 @@ void Restaurant::removeFood(int foodId) {
 
 
 
+QString Restaurant::serializeMenu() const {
+    QStringList items;
+    for (const Food& food : menu) {
+        // فرض می‌کنیم هر غذا این اطلاعات رو داره: ID، نام، توضیح، قیمت
+        items << QString("%1~%2~%3~%4")
+                     .arg(food.getId())
+                     .arg(food.getName())
+                     .arg(food.getDescription())
+                     .arg(food.getPrice());
+    }
+    return items.join("|"); // هر غذا با | جدا میشه و اطلاعات داخل هر غذا با ~
+}
 

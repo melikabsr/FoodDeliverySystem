@@ -3,7 +3,8 @@
 #include <QHBoxLayout>
 #include <QMessageBox>
 #include "restaurantlistwindow.h"
-
+#include "adminpanel.h"
+#include "restaurantownerpanel.h"
 LoginWindow::LoginWindow(QWidget* parent)
     : QWidget(parent)
 {
@@ -48,30 +49,73 @@ void LoginWindow::onLoginClicked()
 {
     QString username = usernameEdit->text().trimmed();
     QString password = passwordEdit->text().trimmed();
+    QString selectedRole = roleCombo->currentText().trimmed().toLower();
 
     if (username.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Input Error", "Please enter both username and password.");
         return;
     }
 
-    QString message = QString("LOGIN|%1|%2").arg(username, password);
+    // تبدیل نقش به قالب مناسب سرور
+    QString role;
+    if (selectedRole == "customer")
+        role = "CUSTOMER";
+    else if (selectedRole == "restaurant owner")
+        role = "RESTAURANT_OWNER";
+    else if (selectedRole == "admin")
+        role = "ADMIN";
+    else
+        role = "UNKNOWN";
+
+    QString message = QString("LOGIN|%1|%2|%3").arg(username, password, role);
     network->sendMessage(message);
 }
 
 void LoginWindow::onMessageReceived(const QString& msg)
 {
-    if (msg.startsWith("✅ LOGIN")) {
+    QStringList parts = msg.split("|");
+    if (parts.size() >= 3 && parts[0] == "LOGIN_RESULT" && parts[1] == "SUCCESS") {
+        QString role = parts[2].trimmed().toUpper();
         statusLabel->setText("✅ Login successful!");
 
-        auto* listWindow = new RestaurantListWindow(network);  // ارسال pointer شبکه
-        listWindow->show();
+        if (role == "CUSTOMER") {
+            auto* customerWin = new RestaurantListWindow(network);
+            customerWin->show();
+        } else if (role == "RESTAURANT_OWNER") {
+            if (parts.size() >= 4) {
+                int restaurantId = parts[3].toInt();  // تبدیل متن به عدد
+                auto* ownerWin = new RestaurantOwnerPanel(network, restaurantId);
+                ownerWin->show();
+            } else {
+                QMessageBox::warning(this, "Invalid data", "Restaurant ID missing for owner login.");
+                return;
+            }
+        } else {
+            QMessageBox::warning(this, "Unknown role", "Unknown user role received from server.");
+            return;
+        }
+
         this->close();
     } else {
         statusLabel->setText("❌ " + msg);
     }
 }
 
+
+
+QString LoginWindow::getUsername() const {
+    return usernameEdit->text().trimmed();
+}
+QString LoginWindow::getPassword() const {
+    return passwordEdit->text().trimmed();
+}
+QString LoginWindow::getRole() const {
+    return roleCombo->currentText().trimmed().toLower();
+}
+
+
+
 void LoginWindow::onNetworkError(const QString& err)
 {
-    statusLabel->setText("⚠️ " + err);
+    QMessageBox::critical(this, "Network Error", err);
 }

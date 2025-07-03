@@ -28,7 +28,7 @@ private:
     QComboBox* categoryCombo;
     QLineEdit* imagePathEdit;
     QPushButton* submitBtn;
-
+    Food createdFood;
     Food newFood;
 };
 

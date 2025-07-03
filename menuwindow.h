@@ -7,6 +7,7 @@
 #include "clientnetwork.h"
 #include <QPushButton>
 #include <QMap>
+#include "ClientNetwork.h"
 class MenuWindow : public QWidget
 {
     Q_OBJECT
@@ -30,4 +31,3 @@ private:
 };
 
 #endif // MENUWINDOW_H
-
