@@ -10,6 +10,7 @@
 class CustomerService
 {
 public:
+    int getQuantity(const Food& food) const;
     static CustomerService& instance();
     void removeUser(const QString& username);
 
@@ -21,6 +22,9 @@ public:
     void setCurrentUser(std::shared_ptr<User> user);
     QString getCurrentUsername() const;
     QList<std::shared_ptr<User>> getAllUsers() const;
+    void removeFromCart(const Food& food);
+    void decreaseQuantity(const Food& food);
+
 
 private:
 

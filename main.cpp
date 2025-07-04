@@ -1,10 +1,16 @@
+
+
+#include "ClientDatabaseManager.h"
 #include <QApplication>
 #include "MainWindow.h"
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
-    MainWindow window;
-    window.show();  // این خیلی مهمه!
 
-    return app.exec();  // تا زمانی که یکی از ویجت‌ها باز هست، برنامه بسته نشه
+    ClientDatabaseManager::instance().openDatabase();
+    ClientDatabaseManager::instance().setupTables();
+
+    MainWindow w;
+    w.show();
+    return app.exec();
 }

@@ -1,28 +1,32 @@
-
 #ifndef CUSTOMERPANEL_H
 #define CUSTOMERPANEL_H
 
 #include <QWidget>
+#include <QVBoxLayout>
 #include <QLabel>
 #include <QPushButton>
-#include <QVBoxLayout>
+#include <QListWidget>
+#include "ClientNetwork.h"
 
-class CustomerPanel : public QWidget
-{
+class CustomerPanel : public QWidget {
     Q_OBJECT
 
 public:
-    explicit CustomerPanel(QWidget *parent = nullptr);
+    explicit CustomerPanel(ClientNetwork* net, const QString& username, QWidget* parent = nullptr);
+    void refreshOrders();
 
 private slots:
     void showOrderHistory();
 
 private:
+    ClientNetwork* network;
+    QString username;
     QLabel* welcomeLabel;
-    QPushButton* viewRestaurantsButton;
-    QPushButton* viewCartButton;
-    QPushButton* viewOrdersButton;
-    QPushButton* logoutButton;
+    QLabel* statusLabel;
+    QVBoxLayout* mainLayout;
+    QListWidget* orderListWidget;
+    QPushButton *viewRestaurantsButton, *viewCartButton, *viewOrdersButton, *logoutButton;
 };
 
 #endif // CUSTOMERPANEL_H
+

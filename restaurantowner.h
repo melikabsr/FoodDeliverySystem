@@ -6,6 +6,9 @@
 
 class RestaurantOwner : public User {
 public:
+
+
+    explicit RestaurantOwner(const QString& username) : User(username, Role::RestaurantOwner) {}
     RestaurantOwner(const QString& username,
                     const QString& password,
                     const QString& email);

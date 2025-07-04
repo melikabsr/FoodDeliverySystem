@@ -16,11 +16,12 @@ private:
 
 public:
     Food();
-    Food(int id, const QString& name, const QString& description,
-         double price, FoodCategory category, const QString& imagePath);
+    Food(int id, const QString& name, const QString& description, double price);
+    Food(int id, const QString& name, const QString& description, double price,
+         FoodCategory category, const QString& imagePath);
 
-    // Copy constructor (برای استفاده در QMap/QPair)
     Food(const Food& other);
+    Food& operator=(const Food& other);
 
     // Getters
     int getId() const;
@@ -32,5 +33,3 @@ public:
 };
 
 #endif // FOOD_H
-
-

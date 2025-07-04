@@ -15,6 +15,9 @@ private:
     OrderStatus status;
     double totalAmount;
     QString customerUsername;
+    QString username;
+
+
 
 public:
     Order();

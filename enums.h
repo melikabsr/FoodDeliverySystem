@@ -18,6 +18,8 @@ enum class OrderStatus {
 };
 
 
+
+
 // دسته‌بندی غذاها
 enum class FoodCategory {
     FAST_FOOD,
@@ -27,6 +29,15 @@ enum class FoodCategory {
     MAIN_COURSE,
     DRINKS,
     DESSERT
+};
+
+
+
+
+enum class Role {
+    Customer,
+    RestaurantOwner,
+    Admin
 };
 
 #endif // ENUMS_H

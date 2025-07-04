@@ -1,66 +1,85 @@
 #include "LoginDialog.h"
-#include "UserFactory.h"
-#include <QMessageBox>
 #include <QVBoxLayout>
 #include <QLabel>
+#include <QMessageBox>
 
-LoginDialog::LoginDialog(QWidget *parent)
-    : QDialog(parent)
+LoginDialog::LoginDialog(ClientNetwork* network, QWidget* parent)
+    : QDialog(parent), network(network)
 {
-    setWindowTitle("Login");
+    setWindowTitle("🔐 Login");
+    resize(300, 220);
 
-    QLabel* userLabel = new QLabel("Username:");
-    QLabel* passLabel = new QLabel("Password:");
-    QLabel* roleLabel = new QLabel("User Type:");
+    QVBoxLayout* layout = new QVBoxLayout(this);
 
     usernameEdit = new QLineEdit(this);
     passwordEdit = new QLineEdit(this);
     passwordEdit->setEchoMode(QLineEdit::Password);
 
     roleCombo = new QComboBox(this);
-    roleCombo->addItem("Customer", QVariant::fromValue(int(UserType::CUSTOMER)));
-    roleCombo->addItem("Restaurant Owner", QVariant::fromValue(int(UserType::RESTAURANT_OWNER)));
-    roleCombo->addItem("Admin", QVariant::fromValue(int(UserType::ADMIN)));
+    roleCombo->addItem("Customer");
+    roleCombo->addItem("Restaurant Owner");
+    roleCombo->addItem("Admin");
 
-    loginButton = new QPushButton("Login");
+    loginButton = new QPushButton("✅ Login", this);
 
-    QVBoxLayout* layout = new QVBoxLayout();
-    layout->addWidget(userLabel);
+    layout->addWidget(new QLabel("Username:", this));
     layout->addWidget(usernameEdit);
-    layout->addWidget(passLabel);
+    layout->addWidget(new QLabel("Password:", this));
     layout->addWidget(passwordEdit);
-    layout->addWidget(roleLabel);
+    layout->addWidget(new QLabel("Role:", this));
     layout->addWidget(roleCombo);
     layout->addWidget(loginButton);
 
-    setLayout(layout);
-
-    connect(loginButton, &QPushButton::clicked, this, &LoginDialog::attemptLogin);
+    connect(loginButton, &QPushButton::clicked, this, &LoginDialog::onLoginClicked);
+    connect(network, &ClientNetwork::messageReceived, this, &LoginDialog::onMessageReceived);
 }
 
-void LoginDialog::attemptLogin()
+QString LoginDialog::getUsername() const {
+    return usernameEdit->text().trimmed();
+}
+
+QString LoginDialog::getPassword() const {
+    return passwordEdit->text().trimmed();
+}
+
+QString LoginDialog::getRole() const {
+    return userRole;
+}
+
+void LoginDialog::onLoginClicked()
 {
-    QString username = usernameEdit->text().trimmed();
-    QString password = passwordEdit->text().trimmed();
-    UserType type = static_cast<UserType>(roleCombo->currentData().toInt());
+    QString username = getUsername();
+    QString password = getPassword();
+    QString selected = roleCombo->currentText().toLower();
+
+    QString role;
+    if (selected == "customer") role = "CUSTOMER";
+    else if (selected == "restaurant owner") role = "RESTAURANT_OWNER";
+    else if (selected == "admin") role = "ADMIN";
+
+    userRole = role;
 
     if (username.isEmpty() || password.isEmpty()) {
         QMessageBox::warning(this, "Login Failed", "Please enter username and password.");
         return;
     }
 
-    auto tempUser = UserFactory::createUser(type, username, password, username + "@example.com");
+    QString message = QString("LOGIN|%1|%2|%3").arg(username, password, role);
+    network->sendMessage(message);
+    loginButton->setEnabled(false);
+}
 
-    if (tempUser && tempUser->login(username, password)) {
-        loggedInUser = std::move(tempUser);
-        QMessageBox::information(this, "Login Success", "Welcome, " + username + "!");
-        accept();  // بسته‌شدن دیالوگ و بازگشت به MainWindow
-    } else {
-        QMessageBox::critical(this, "Login Failed", "Invalid credentials.");
+void LoginDialog::onMessageReceived(const QString& msg)
+{
+    if (!msg.startsWith("LOGIN_RESULT|")) return;
+
+    loginButton->setEnabled(true);
+
+    QStringList parts = msg.split("|");
+    if (parts.size() < 3 || parts[1] != "SUCCESS") {
+        QMessageBox::critical(this, "Login Failed", "Invalid login credentials.");
+        return;
     }
-}
 
-std::unique_ptr<User> LoginDialog::getLoggedInUser() {
-    return std::move(loggedInUser);  // انتقال مالکیت به MainWindow
+    accept();  // بستن دیالوگ
 }
-

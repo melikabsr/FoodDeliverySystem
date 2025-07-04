@@ -11,14 +11,14 @@ protected:
     QString password;
     QString email;
     UserType userType;
-
+      Role role;
 public:
     // Constructor
     User(const QString& username,
          const QString& password,
          const QString& email,
          UserType type);
-
+     User(const QString& username, Role role) : username(username), role(role) {}
     // Virtual destructor for proper cleanup in derived classes
     virtual ~User() = default;
 

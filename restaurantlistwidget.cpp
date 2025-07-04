@@ -1,45 +1,66 @@
 #include "RestaurantListWidget.h"
-#include <QGroupBox>
+#include <QVBoxLayout>
+#include <QLabel>
 #include <QMessageBox>
-#include <menuwidget.h>
-RestaurantListWidget::RestaurantListWidget(QWidget *parent)
-    : QWidget(parent)
-{
-    mainLayout = new QVBoxLayout(this);
-    setLayout(mainLayout);
+#include "MenuWindow.h"
+#include <QCloseEvent>
 
-    loadRestaurants();
-    displayRestaurants();
+RestaurantListWidget::RestaurantListWidget(ClientNetwork* network, const QString& username, QWidget* parent)
+    : QWidget(parent), network(network), username(username)
+{
+    setWindowTitle("📋 Available Restaurants");
+    resize(400, 400);
+
+    QVBoxLayout* layout = new QVBoxLayout(this);
+    listWidget = new QListWidget(this);
+    layout->addWidget(new QLabel("🍽️ Select a restaurant:"));
+    layout->addWidget(listWidget);
+
+    connect(network, &ClientNetwork::messageReceived, this, &RestaurantListWidget::onMessageReceived);
+    connect(listWidget, &QListWidget::itemClicked, this, &RestaurantListWidget::onRestaurantSelected);
+
+    network->sendMessage("GET_RESTAURANTS");
 }
 
-void RestaurantListWidget::loadRestaurants()
+void RestaurantListWidget::onMessageReceived(const QString& msg)
 {
-    mockRestaurants.append(Restaurant(1, "Pizza House", "Main Street 101"));
-    mockRestaurants.append(Restaurant(2, "Kebab City", "Vali-Asr Ave 55"));
-    mockRestaurants.append(Restaurant(3, "Cafe Queen", "Shahrak Blvd 19"));
-}
+    if (!msg.startsWith("RESTAURANTS|")) return;
 
-void RestaurantListWidget::displayRestaurants()
-{
-    for (const Restaurant& r : mockRestaurants) {
-        QGroupBox* card = new QGroupBox(r.getName());
-        QVBoxLayout* vbox = new QVBoxLayout(card);
+    listWidget->clear();
+    itemToId.clear();
 
-        QLabel* addressLabel = new QLabel("📍 Address: " + r.getAddress());
-        QPushButton* viewMenuBtn = new QPushButton("View Menu");
+    QString data = msg.section("|", 1);
+    QStringList rows = data.split(";");
 
-        vbox->addWidget(addressLabel);
-        vbox->addWidget(viewMenuBtn);
-        card->setLayout(vbox);
+    for (const QString& row : rows) {
+        QStringList cols = row.split(",");
+        if (cols.size() < 2) continue;
 
-        mainLayout->addWidget(card);
+        int id = cols[0].toInt();
+        QString name = cols[1];
 
-        connect(viewMenuBtn, &QPushButton::clicked, [=]() {
-            MenuWidget* menu = new MenuWidget(r);
-            menu->setWindowTitle("Menu - " + r.getName());
-            menu->resize(400, 400);
-            menu->show();
-        });
-
+        QListWidgetItem* item = new QListWidgetItem("🍽️ " + name);
+        listWidget->addItem(item);
+        itemToId[item] = id;
     }
+}
+
+void RestaurantListWidget::onRestaurantSelected(QListWidgetItem* item)
+{
+    if (!itemToId.contains(item)) return;
+
+    int id = itemToId.value(item);
+    QString name = item->text().remove("🍽️ ").trimmed();
+
+    auto* menuWindow = new MenuWindow(network, id, name, this);
+    menuWindow->setAttribute(Qt::WA_DeleteOnClose);
+    menuWindow->show();
+}
+
+
+
+void RestaurantListWidget::closeEvent(QCloseEvent* event)
+{
+    disconnect(network, &ClientNetwork::messageReceived, this, nullptr);
+    QWidget::closeEvent(event);
 }

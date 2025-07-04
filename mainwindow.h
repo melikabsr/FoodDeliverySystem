@@ -6,10 +6,12 @@
 #include <QMenu>
 #include <QAction>
 #include <QVBoxLayout>
+#include <QLabel>
 #include "LoginDialog.h"
-#include "User.h"
+#include "ClientNetwork.h"
 #include "CustomerPanel.h"
-#include "Restaurant.h"
+#include "RestaurantOwnerPanel.h"
+#include "AdminPanel.h"
 
 class MainWindow : public QMainWindow
 {
@@ -18,21 +20,26 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+ void showWelcomeScreen();
+public slots:
+    void onMessageReceived(const QString& msg);
 
 private slots:
     void onLoginClicked();
     void onExitClicked();
 
 private:
-    QWidget* centralWidget;
-    QVBoxLayout* mainLayout;
     QMenuBar* menuBar;
     QMenu* fileMenu;
     QAction* loginAction;
     QAction* exitAction;
+    ClientNetwork* network;
+    QLabel* statusLabel;
+    QString username;
+    QString userRole;
+
+
 };
 
 #endif // MAINWINDOW_H
-
-
 

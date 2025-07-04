@@ -7,53 +7,9 @@
 #include <enums.h>
 #include "Order.h"
 #include "OrderManager.h"
+#include "ClientNetwork.h"
 
-ShoppingCartWidget::ShoppingCartWidget(QWidget *parent)
-    : QWidget(parent)
-{
-    setWindowTitle("🛒 Your Cart");
-    resize(450, 500);
 
-    layout = new QVBoxLayout(this);
-    totalLabel = new QLabel("Total: $0", this);
-    totalLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
-    layout->addWidget(totalLabel);
-
-    loadCartItems();
-
-    QPushButton* clearBtn = new QPushButton("❌ Clear Cart");
-    QPushButton* checkoutBtn = new QPushButton("✅ Submit Order");
-    layout->addWidget(clearBtn);
-    layout->addWidget(checkoutBtn);
-
-    connect(clearBtn, &QPushButton::clicked, [=]() {
-        CustomerService::instance().clearCart();
-        refresh();
-    });
-
-    connect(checkoutBtn, &QPushButton::clicked, [=]() {
-        auto items = CustomerService::instance().getCartItems();
-        if (items.isEmpty()) {
-            QMessageBox::warning(this, "Cart Empty", "Your cart is empty.");
-            return;
-        }
-
-        QString username = CustomerService::instance().getCurrentUsername();
-
-        Order newOrder(OrderManager::instance().getAllOrders().size() + 1, username);
-        for (const auto& pair : items) {
-            const Food& food = pair.first;
-            int qty = pair.second;
-            newOrder.addItem(food, qty);
-        }
-
-        OrderManager::instance().addOrder(newOrder);
-        QMessageBox::information(this, "Success", "Order submitted successfully!");
-
-        CustomerService::instance().clearCart();
-        refresh();
-    });
-}
 
 void ShoppingCartWidget::addItem(const Food& food)
 {
@@ -162,4 +118,53 @@ void ShoppingCartWidget::loadCartItems()
     }
 
     totalLabel->setText(QString("Total: $%1").arg(total));
+}
+
+
+
+
+
+ShoppingCartWidget::ShoppingCartWidget(ClientNetwork* network, const QString& username, QWidget* parent)
+    : QWidget(parent), network(network), username(username)
+{
+    setWindowTitle("🛒 Your Cart - " + username);
+    resize(450, 500);
+
+    layout = new QVBoxLayout(this);
+    totalLabel = new QLabel("Total: $0", this);
+    totalLabel->setStyleSheet("font-weight: bold; font-size: 16px;");
+    layout->addWidget(totalLabel);
+
+    loadCartItems();
+
+    QPushButton* clearBtn = new QPushButton("❌ Clear Cart");
+    QPushButton* checkoutBtn = new QPushButton("✅ Submit Order");
+    layout->addWidget(clearBtn);
+    layout->addWidget(checkoutBtn);
+
+    connect(clearBtn, &QPushButton::clicked, [=]() {
+        CustomerService::instance().clearCart();
+        refresh();
+    });
+
+    connect(checkoutBtn, &QPushButton::clicked, [=]() {
+        auto items = CustomerService::instance().getCartItems();
+        if (items.isEmpty()) {
+            QMessageBox::warning(this, "Cart Empty", "Your cart is empty.");
+            return;
+        }
+
+        Order newOrder(OrderManager::instance().getAllOrders().size() + 1, username);
+        for (const auto& pair : items) {
+            const Food& food = pair.first;
+            int qty = pair.second;
+            newOrder.addItem(food, qty);
+        }
+
+        OrderManager::instance().addOrder(newOrder);
+        QMessageBox::information(this, "Success", "Order submitted successfully!");
+
+        CustomerService::instance().clearCart();
+        refresh();
+    });
 }

@@ -2,28 +2,27 @@
 #define RESTAURANTLISTWIDGET_H
 
 #include <QWidget>
-#include <QVBoxLayout>
-#include <QLabel>
-#include <QScrollArea>
-#include <QPushButton>
-#include <QList>
-#include "enums.h"
-
-#include "Restaurant.h"
+#include <QListWidget>
+#include <QMap>
+#include "ClientNetwork.h"
 
 class RestaurantListWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit RestaurantListWidget(QWidget *parent = nullptr);
+    explicit RestaurantListWidget(ClientNetwork* network, const QString& username, QWidget* parent = nullptr);
+    void closeEvent(QCloseEvent* event);
+private slots:
+    void onMessageReceived(const QString& msg);
+    void onRestaurantSelected(QListWidgetItem* item);
 
 private:
-    QVBoxLayout* mainLayout;
-    QList<Restaurant> mockRestaurants;
+    ClientNetwork* network;
+    QString username;
 
-    void loadRestaurants();
-    void displayRestaurants();
+    QListWidget* listWidget;
+    QMap<QListWidgetItem*, int> itemToId;
 };
 
 #endif // RESTAURANTLISTWIDGET_H

@@ -1,143 +1,132 @@
 #include "RestaurantOwnerPanel.h"
-#include <QMessageBox>
-#include <QApplication>
 #include "AddFoodDialog.h"
-#include "OrderManager.h"
+#include "RestaurantOrdersWindow.h"
+#include "MainWindow.h"
+#include <QMessageBox>
 #include <QGroupBox>
-#include <QVBoxLayout>
-#include <QPushButton>
-#include <QLabel>
 
-RestaurantOwnerPanel::RestaurantOwnerPanel(QWidget *parent)
-    : QWidget(parent)
+RestaurantOwnerPanel::RestaurantOwnerPanel(ClientNetwork* network, int restaurantId, QWidget* parent)
+    : QWidget(parent), clientNetwork(network), restaurantId(restaurantId)
 {
     QVBoxLayout* layout = new QVBoxLayout(this);
 
-    welcomeLabel = new QLabel("👨‍🍳 Welcome, dear Restaurant Owner!", this);
-    welcomeLabel->setAlignment(Qt::AlignCenter);
-
-    viewMenuButton = new QPushButton("📋 View My Menu");
-    addFoodButton = new QPushButton("➕ Add New Food");
-    viewOrdersButton = new QPushButton("📦 View Orders");
-    logoutButton = new QPushButton("Logout");
-
+    welcomeLabel = new QLabel("👨‍🍳 Welcome, Restaurant Owner!");
     layout->addWidget(welcomeLabel);
+
+    ordersTextEdit = new QTextEdit(this);
+    ordersTextEdit->setReadOnly(true);
+    layout->addWidget(ordersTextEdit);
+
+    viewMenuButton = new QPushButton("📋 View Menu");
+    addFoodButton = new QPushButton("➕ Add Food");
+    viewOrdersButton = new QPushButton("📦 View Orders");
+    logoutButton = new QPushButton("🚪 Logout");
+
     layout->addWidget(viewMenuButton);
     layout->addWidget(addFoodButton);
     layout->addWidget(viewOrdersButton);
     layout->addWidget(logoutButton);
 
-    // TODO: اتصال به صفحات مختلف - فعلاً فقط پیام ساده می‌دهیم
     connect(viewMenuButton, &QPushButton::clicked, this, &RestaurantOwnerPanel::showMenu);
     connect(addFoodButton, &QPushButton::clicked, this, &RestaurantOwnerPanel::addFood);
     connect(viewOrdersButton, &QPushButton::clicked, this, &RestaurantOwnerPanel::viewOrders);
     connect(logoutButton, &QPushButton::clicked, this, &RestaurantOwnerPanel::logout);
+    connect(clientNetwork, &ClientNetwork::menuReceived, this, &RestaurantOwnerPanel::updateMenuDisplay);
 }
 
 void RestaurantOwnerPanel::showMenu()
 {
-    QWidget* menuWindow = new QWidget();
-    menuWindow->setWindowTitle("📋 My Menu");
-    menuWindow->resize(400, 500);
-
-    QVBoxLayout* layout = new QVBoxLayout(menuWindow);
-
-    if (myMenu.isEmpty()) {
-        layout->addWidget(new QLabel("❌ No food in menu."));
-    } else {
-        for (int i = 0; i < myMenu.size(); ++i) {
-            const Food& food = myMenu[i];
-
-            QGroupBox* box = new QGroupBox(food.getName());
-            QVBoxLayout* vbox = new QVBoxLayout(box);
-
-            QLabel* desc = new QLabel("📝 " + food.getDescription());
-            QLabel* price = new QLabel(QString("💰 %1 $").arg(food.getPrice()));
-            QPushButton* removeBtn = new QPushButton("🗑 Remove");
-
-            connect(removeBtn, &QPushButton::clicked, [=]() {
-                myMenu.removeAt(i);
-                box->hide();  // فقط همین کارت حذف میشه
-            });
-
-            vbox->addWidget(desc);
-            vbox->addWidget(price);
-            vbox->addWidget(removeBtn);
-            layout->addWidget(box);
-        }
+    if (menuWindow) {
+        menuWindow->close();
+        delete menuWindow;
     }
 
-    menuWindow->setLayout(layout);
+    menuWindow = new QWidget();
+    menuWindow->setWindowTitle("📋 My Menu");
+    menuLayout = new QVBoxLayout(menuWindow);
+    menuWindow->setLayout(menuLayout);
+    menuWindow->resize(500, 600);
     menuWindow->show();
+
+    clientNetwork->sendMessage("GET_MY_MENU");
 }
 
+void RestaurantOwnerPanel::updateMenuDisplay(const QList<Food>& menu)
+{
+    myMenu = menu;
+
+    QLayoutItem* item;
+    while ((item = menuLayout->takeAt(0)) != nullptr) {
+        delete item->widget();
+        delete item;
+    }
+
+    for (const Food& food : myMenu) {
+        QGroupBox* box = new QGroupBox(food.getName());
+        QVBoxLayout* vbox = new QVBoxLayout(box);
+
+        QLabel* desc = new QLabel(food.getDescription());
+        QLabel* price = new QLabel(QString("💵 %1 $").arg(food.getPrice()));
+        QPushButton* removeBtn = new QPushButton("🗑 Remove");
+
+        connect(removeBtn, &QPushButton::clicked, this, [=]() {
+            removeFoodFromMenu(food.getId(), box);
+        });
+
+        vbox->addWidget(desc);
+        vbox->addWidget(price);
+        vbox->addWidget(removeBtn);
+        menuLayout->addWidget(box);
+    }
+}
 
 void RestaurantOwnerPanel::addFood()
 {
     AddFoodDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         Food food = dialog.getNewFood();
-        myMenu.append(food);
-
-        QMessageBox::information(this, "Food Added",
-                                 QString("✅ %1 added to your menu!").arg(food.getName()));
+        QString msg = QString("ADD_FOOD|%1|%2|%3|%4")
+                          .arg(restaurantId)
+                          .arg(food.getName())
+                          .arg(food.getDescription())
+                          .arg(food.getPrice());
+        clientNetwork->sendMessage(msg);
+        QMessageBox::information(this, "✅ Added", "Food sent to server.");
+        clientNetwork->sendMessage("GET_MY_MENU");
     }
+}
+
+void RestaurantOwnerPanel::removeFoodFromMenu(int foodId, QGroupBox* box)
+{
+    QString msg = QString("REMOVE_FOOD|%1").arg(foodId);
+    clientNetwork->sendMessage(msg);
+    if (box) box->hide();
 }
 
 void RestaurantOwnerPanel::viewOrders()
 {
-    QWidget* orderWindow = new QWidget();
-    orderWindow->setWindowTitle("📦 Orders for Your Restaurant");
-    orderWindow->resize(500, 500);
+    auto* ordersWin = new RestaurantOrdersWindow(restaurantId, clientNetwork);
+    ordersWin->setAttribute(Qt::WA_DeleteOnClose);
+    ordersWin->show();
+}
 
-    QVBoxLayout* layout = new QVBoxLayout(orderWindow);
-    QVector<Order> allOrders = OrderManager::instance().getAllOrders();
-
-    int matchCount = 0;
-
-    for (const Order& order : allOrders) {
-        bool hasMyFood = false;
-        for (const auto& pair : order.getItems()) {
-            const Food& orderedFood = pair.first;
-            for (const Food& myFood : myMenu) {
-                if (orderedFood.getId() == myFood.getId()) {
-                    hasMyFood = true;
-                    break;
-                }
-            }
-            if (hasMyFood) break;
-        }
-
-        if (hasMyFood) {
-            QGroupBox* box = new QGroupBox(QString("🧾 Order #%1 - Customer: %2")
-                                               .arg(order.getId()).arg(order.getCustomerUsername()));
-            QVBoxLayout* boxLayout = new QVBoxLayout(box);
-
-            boxLayout->addWidget(new QLabel(QString("Status: %1").arg(static_cast<int>(order.getStatus()))));
-            boxLayout->addWidget(new QLabel(QString("Total: $%1").arg(order.getTotalAmount())));
-
-            for (const auto& pair : order.getItems()) {
-                const Food& food = pair.first;
-                int qty = pair.second;
-                QLabel* label = new QLabel(QString("🍽️ %1 x %2").arg(food.getName()).arg(qty));
-                boxLayout->addWidget(label);
-            }
-
-            layout->addWidget(box);
-            matchCount++;
-        }
-    }
-
-    if (matchCount == 0) {
-        layout->addWidget(new QLabel("❌ No matching orders for your food."));
-    }
-
-    orderWindow->setLayout(layout);
-    orderWindow->show();
+void RestaurantOwnerPanel::refreshOrders()
+{
+    ordersTextEdit->clear();
+    ordersTextEdit->append("📥 Orders will appear here when updated.");
 }
 
 void RestaurantOwnerPanel::logout()
 {
-    QMessageBox::information(this, "Logout", "خروج از پنل.");
-    qApp->exit();
+    QMessageBox::information(this, "👋 Logout", "Logging out...");
+    QWidget* parent = this->parentWidget();
+    while (parent && !qobject_cast<MainWindow*>(parent)) {
+        parent = parent->parentWidget();
+    }
+
+    if (MainWindow* mw = qobject_cast<MainWindow*>(parent)) {
+        mw->showWelcomeScreen();
+    }
+
+    this->deleteLater();
 }

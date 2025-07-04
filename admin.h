@@ -6,6 +6,9 @@
 
 class Admin : public User {
 public:
+
+
+     explicit Admin(const QString& username) : User(username, Role::Admin) {}
     Admin(const QString& username,
           const QString& password,
           const QString& email);

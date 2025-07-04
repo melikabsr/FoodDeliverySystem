@@ -4,7 +4,7 @@
 #include <QHBoxLayout>
 #include <QMessageBox>
 
-AdminMenuWidget::AdminMenuWidget(const Restaurant& restaurant, QWidget *parent)
+AdminMenuWidget::AdminMenuWidget(Restaurant& restaurant, QWidget *parent)
     : QWidget(parent), restaurant(restaurant)
 {
     setWindowTitle("🍽️ Menu Management - " + restaurant.getName());
@@ -40,8 +40,10 @@ void AdminMenuWidget::refreshMenu()
 
 void AdminMenuWidget::onAddFoodClicked()
 {
-    AddFoodDialog dialog(restaurant, this);
+    AddFoodDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
+        Food food = dialog.getNewFood();
+        restaurant.addFood(food);
         refreshMenu();
     }
 }
@@ -59,3 +61,4 @@ void AdminMenuWidget::onRemoveFoodClicked()
     QMessageBox::information(this, "Removed", "Food item removed.");
     refreshMenu();
 }
+

@@ -1,37 +1,33 @@
 #include "AddFoodDialog.h"
-#include <QHBoxLayout>
+#include <QVBoxLayout>
+#include <QDialogButtonBox>
 #include <QMessageBox>
-#include "enums.h"
+#include <QLabel>
 
-AddFoodDialog::AddFoodDialog(QWidget *parent)
+AddFoodDialog::AddFoodDialog(QWidget* parent)
     : QDialog(parent)
 {
     setWindowTitle("➕ Add New Food");
-    resize(300, 300);
-
-    QVBoxLayout* layout = new QVBoxLayout(this);
+    resize(350, 300);
 
     nameEdit = new QLineEdit(this);
-    nameEdit->setPlaceholderText("Food name");
-
     descriptionEdit = new QLineEdit(this);
-    descriptionEdit->setPlaceholderText("Description");
-
     priceEdit = new QLineEdit(this);
-    priceEdit->setPlaceholderText("Price (e.g. 10.5)");
-
     imagePathEdit = new QLineEdit(this);
-    imagePathEdit->setPlaceholderText("Image path (optional)");
-
     categoryCombo = new QComboBox(this);
+
+    nameEdit->setPlaceholderText("Name");
+    descriptionEdit->setPlaceholderText("Description");
+    priceEdit->setPlaceholderText("Price");
+    imagePathEdit->setPlaceholderText("Image Path (optional)");
+
     categoryCombo->addItem("Fast Food", QVariant::fromValue(int(FoodCategory::FAST_FOOD)));
     categoryCombo->addItem("Iranian", QVariant::fromValue(int(FoodCategory::IRANIAN)));
     categoryCombo->addItem("Pizza", QVariant::fromValue(int(FoodCategory::PIZZA)));
     categoryCombo->addItem("Drinks", QVariant::fromValue(int(FoodCategory::DRINKS)));
     categoryCombo->addItem("Dessert", QVariant::fromValue(int(FoodCategory::DESSERT)));
 
-    submitBtn = new QPushButton("Submit", this);
-
+    auto* layout = new QVBoxLayout(this);
     layout->addWidget(new QLabel("Name:"));
     layout->addWidget(nameEdit);
     layout->addWidget(new QLabel("Description:"));
@@ -42,9 +38,12 @@ AddFoodDialog::AddFoodDialog(QWidget *parent)
     layout->addWidget(categoryCombo);
     layout->addWidget(new QLabel("Image Path:"));
     layout->addWidget(imagePathEdit);
-    layout->addWidget(submitBtn);
 
-    connect(submitBtn, &QPushButton::clicked, this, &AddFoodDialog::submit);
+    auto* buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+    layout->addWidget(buttons);
+
+    connect(buttons, &QDialogButtonBox::accepted, this, &AddFoodDialog::submit);
+    connect(buttons, &QDialogButtonBox::rejected, this, &AddFoodDialog::reject);
 }
 
 void AddFoodDialog::submit()
@@ -68,5 +67,6 @@ void AddFoodDialog::submit()
 
 Food AddFoodDialog::getNewFood() const
 {
-    return newFood;
+    // return newFood;
+    return createdFood;
 }

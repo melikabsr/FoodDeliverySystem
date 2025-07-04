@@ -7,12 +7,16 @@
 #include <QPushButton>
 #include "Restaurant.h"
 
+class QListWidget;
+class QPushButton;
+
 class AdminMenuWidget : public QWidget
 {
     Q_OBJECT
 
 public:
-    explicit AdminMenuWidget(const Restaurant& restaurant, QWidget *parent = nullptr);
+   // explicit AdminMenuWidget(const Restaurant& restaurant, QWidget *parent = nullptr);
+    explicit AdminMenuWidget(Restaurant& restaurant, QWidget *parent = nullptr);
 
 private slots:
     void onAddFoodClicked();
