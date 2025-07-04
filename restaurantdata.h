@@ -18,6 +18,7 @@ public:
     QVector<Restaurant> getAllRestaurants() const;
     QString serializeRestaurants() const;
     int generateNewId() const;
+    Restaurant* getRestaurantByOwner(const QString& ownerUsername);
 
 private:
     explicit RestaurantData(QObject* parent = nullptr);

@@ -3,33 +3,26 @@
 
 #include <QObject>
 #include <QVector>
-#include <QMap>
-#include "Food.h"
 #include "ServerOrder.h"
-// struct Order
-// {
-//     int id;
-//     QString username;
-//     QMap<int, QPair<Food, int>> items;
-// };
 
 class OrderManager : public QObject
 {
     Q_OBJECT
 
 public:
-    static OrderManager& instance();
+    static OrderManager& instance();  // Singleton
 
+    void addOrder(const ServerOrder& order);
     QVector<ServerOrder> getOrdersForCustomer(const QString& username) const;
-    QVector<ServerOrder> getAllOrders() const;
-    void removeOrder(int id);
-    int generateNewId() const;
-    void addOrder(const ServerOrder& order) ;
-
+    QVector<ServerOrder>& getAllOrders();
+    ServerOrder* getOrderById(int id);
+    void removeOrder(int orderId);
+    int generateNewId();
+    int initializeNextIdFromDatabase() ;
 private:
     explicit OrderManager(QObject* parent = nullptr);
     QVector<ServerOrder> orders;
+    int nextOrderId = 1;
 };
 
 #endif // ORDERMANAGER_H
-

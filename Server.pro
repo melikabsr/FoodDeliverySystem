@@ -3,47 +3,53 @@ QT       += core gui
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
-
+ QT += sql
 # You can make your code fail to compile if it uses deprecated APIs.
 # In order to do so, uncomment the following line.
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
     clienthandler.cpp \
-    dialog.cpp \
+    databasemanager.cpp \
     food.cpp \
+    foodrepository.cpp \
     main.cpp \
-    mainwindow.cpp \
     ordermanager.cpp \
+    orderpersistence.cpp \
     restaurant.cpp \
     restaurantdata.cpp \
+    restaurantrepository.cpp \
     serverapp.cpp \
     serverorder.cpp \
-    userdatabase.cpp
+    userrepository.cpp
 
 HEADERS += \
     clienthandler.h \
-    dialog.h \
+    databasemanager.h \
     food.h \
-    mainwindow.h \
+    foodrepository.h \
     ordermanager.h \
+    orderpersistence.h \
     restaurant.h \
     restaurantdata.h \
+    restaurantrepository.h \
     serverapp.h \
     serverorder.h \
-    userdatabase.h
+    userrepository.h
 
 FORMS += \
     clienthandler.ui \
-    dialog.ui \
+    databasemanager.ui \
     food.ui \
-    mainwindow.ui \
+    foodrepository.ui \
     ordermanager.ui \
+    orderpersistence.ui \
     restaurant.ui \
     restaurantdata.ui \
+    restaurantrepository.ui \
     serverapp.ui \
     serverorder.ui \
-    userdatabase.ui
+    userrepository.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -14,13 +14,18 @@ public:
 private:
     QTcpSocket* socket;
     QString username;
-    void handleAddOrder(const QStringList& parts);
-    void handleGetOrders(const QStringList& parts);
 
     void processMessage(const QString& msg);
+    void sendMessage(const QString& msg);
+
     void handleLogin(const QStringList& parts);
     void handleGetRestaurants();
     void handleGetMenu(const QStringList& parts);
+    void handleAddOrder(const QStringList& parts);
+    void handleGetOrders(const QStringList& parts);
+    void handleUpdateOrderStatus(const QStringList& parts);
+    void handleGetOrdersByRestaurant(const QStringList& parts); // فعلاً ناتمام
 };
 
 #endif // CLIENTHANDLER_H
+

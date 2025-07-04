@@ -1,14 +1,13 @@
 #include "RestaurantData.h"
 
+
 RestaurantData::RestaurantData(QObject* parent)
     : QObject(parent)
 {
-    // چند رستوران نمونه
-    restaurants.append(Restaurant(1, "Pizza Land", "Valiasr St."));
-    restaurants.append(Restaurant(2, "Kebab Time", "Enghelab Sq."));
-    restaurants.append(Restaurant(3, "Veggie House", "Jordan Blvd."));
+    restaurants.append(Restaurant(1, QString("Pizza Land"), QString("Valiasr St.")));
+    restaurants.append(Restaurant(2, QString("Kebab Time"), QString("Enghelab Sq.")));
+    restaurants.append(Restaurant(3, QString("Veggie House"), QString("Jordan Blvd.")));
 }
-
 RestaurantData& RestaurantData::instance()
 {
     static RestaurantData data;
@@ -59,6 +58,16 @@ QString RestaurantData::serializeRestaurants() const
 const Restaurant* RestaurantData::getRestaurantById(int id) const {
     for (const Restaurant& r : restaurants) {
         if (r.getId() == id)
+            return &r;
+    }
+    return nullptr;
+}
+
+
+Restaurant* RestaurantData::getRestaurantByOwner(const QString& ownerUsername)
+{
+    for (Restaurant& r : restaurants) {
+        if (r.getOwnerUsername() == ownerUsername)
             return &r;
     }
     return nullptr;
