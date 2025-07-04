@@ -41,40 +41,40 @@ template <> constexpr inline auto RestaurantOwnerPanel::qt_create_metaobjectdata
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "RestaurantOwnerPanel",
-        "showMenu",
+        "refreshOrders",
         "",
-        "addFood",
-        "viewOrders",
-        "logout",
         "updateMenuDisplay",
         "QList<Food>",
         "menu",
+        "showMenu",
+        "addFood",
+        "viewOrders",
+        "logout",
         "removeFoodFromMenu",
         "foodId",
         "QGroupBox*",
-        "boxToRemove",
-        "refreshOrders"
+        "box"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'showMenu'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'addFood'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'viewOrders'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'logout'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'updateMenuDisplay'
-        QtMocHelpers::SlotData<void(const QList<Food> &)>(6, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { 0x80000000 | 7, 8 },
-        }}),
-        // Slot 'removeFoodFromMenu'
-        QtMocHelpers::SlotData<void(int, QGroupBox *)>(9, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 10 }, { 0x80000000 | 11, 12 },
-        }}),
         // Slot 'refreshOrders'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'updateMenuDisplay'
+        QtMocHelpers::SlotData<void(const QList<Food> &)>(3, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 4, 5 },
+        }}),
+        // Slot 'showMenu'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'addFood'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'viewOrders'
+        QtMocHelpers::SlotData<void()>(8, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'logout'
+        QtMocHelpers::SlotData<void()>(9, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'removeFoodFromMenu'
+        QtMocHelpers::SlotData<void(int, QGroupBox *)>(10, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 11 }, { 0x80000000 | 12, 13 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -98,20 +98,20 @@ void RestaurantOwnerPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
     auto *_t = static_cast<RestaurantOwnerPanel *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->showMenu(); break;
-        case 1: _t->addFood(); break;
-        case 2: _t->viewOrders(); break;
-        case 3: _t->logout(); break;
-        case 4: _t->updateMenuDisplay((*reinterpret_cast< std::add_pointer_t<QList<Food>>>(_a[1]))); break;
-        case 5: _t->removeFoodFromMenu((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QGroupBox*>>(_a[2]))); break;
-        case 6: _t->refreshOrders(); break;
+        case 0: _t->refreshOrders(); break;
+        case 1: _t->updateMenuDisplay((*reinterpret_cast< std::add_pointer_t<QList<Food>>>(_a[1]))); break;
+        case 2: _t->showMenu(); break;
+        case 3: _t->addFood(); break;
+        case 4: _t->viewOrders(); break;
+        case 5: _t->logout(); break;
+        case 6: _t->removeFoodFromMenu((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QGroupBox*>>(_a[2]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 5:
+        case 6:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 1:

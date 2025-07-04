@@ -6,16 +6,13 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLabel>
-#include "clientnetwork.h"
-
-
+#include "ClientNetwork.h"
 
 class OrderStatusEditor : public QWidget
 {
     Q_OBJECT
 
 public:
-    OrderStatusEditor(int orderId, QWidget* parent = nullptr);
     explicit OrderStatusEditor(int orderId, ClientNetwork* network, QWidget* parent = nullptr);
 
 signals:
@@ -25,7 +22,7 @@ private slots:
     void onSubmitClicked();
 
 private:
-     ClientNetwork* network;
+    ClientNetwork* network;
     int orderId;
     QComboBox* statusCombo;
     QPushButton* submitBtn;

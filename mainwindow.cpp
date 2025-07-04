@@ -1,39 +1,23 @@
-#include <QDebug>
-#include <QMessageBox>
-#include "LoginDialog.h"
-#include "enums.h"
-#include "CustomerPanel.h"
-#include "Restaurant.h"
-#include "MenuWidget.h"
 #include "MainWindow.h"
+#include <QMessageBox>
 #include <QVBoxLayout>
-#include <memory>
-#include "CustomerService.h"
-#include "RestaurantOwnerPanel.h"
-#include "AdminPanel.h"
+#include <QDebug>
 #include <QApplication>
 
-
-#include <QDebug>
-#include <QMessageBox>
-#include "LoginDialog.h"
-#include "CustomerPanel.h"
-#include "MainWindow.h"
-#include "ClientNetwork.h"
-#include <QVBoxLayout>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
 {
-    setWindowTitle("سامانه سفارش غذای آنلاین");
+    setWindowTitle("🍽️ سامانه سفارش غذای آنلاین");
 
-    // ساخت اتصال شبکه
     network = new ClientNetwork(this);
     if (!network->connectToServer("127.0.0.1", 1234)) {
         QMessageBox::critical(this, "اتصال ناموفق", "ارتباط با سرور برقرار نشد.");
     }
 
-    // نوار منو
+    connect(network, &ClientNetwork::messageReceived,
+            this, &MainWindow::onMessageReceived);
+
     menuBar = new QMenuBar(this);
     fileMenu = menuBar->addMenu("File");
 
@@ -47,103 +31,84 @@ MainWindow::MainWindow(QWidget *parent)
     connect(loginAction, &QAction::triggered, this, &MainWindow::onLoginClicked);
     connect(exitAction, &QAction::triggered, this, &MainWindow::onExitClicked);
 
-    // ایجاد ویجت مرکزی و تنظیم آن
-    QWidget* mainWidget = new QWidget(this);
-    QVBoxLayout* layout = new QVBoxLayout(mainWidget);
-
-    QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
-    welcomeLabel->setAlignment(Qt::AlignCenter);
-    layout->addWidget(welcomeLabel);
-
-    statusLabel = new QLabel(this);
-    statusLabel->setAlignment(Qt::AlignCenter);
-    statusLabel->setStyleSheet("color: green; font-weight: bold; font-size: 14px;");
-    layout->addWidget(statusLabel);
-
-    mainWidget->setLayout(layout);
-    setCentralWidget(mainWidget);
+    showWelcomeScreen();
 }
 
 MainWindow::~MainWindow() {}
-void MainWindow::onMessageReceived(const QString& msg)
-{
-    QStringList parts = msg.split("|");
-    if (parts.size() >= 3 && parts[0] == "LOGIN_RESULT" && parts[1] == "SUCCESS") {
-        QString role = parts[2].trimmed().toUpper();
-        statusLabel->setText("✅ Login successful!");
-
-        if (role == "CUSTOMER") {
-            auto* panel = new CustomerPanel(network, username);
-            connect(network, &ClientNetwork::ordersUpdated,
-                    panel, &CustomerPanel::refreshOrders);
-            setCentralWidget(panel);
-        }
-
-        else if (role == "RESTAURANT_OWNER") {
-            if (parts.size() >= 4) {
-                int restaurantId = parts[3].toInt();
-                auto* panel = new RestaurantOwnerPanel(network, restaurantId);
-                connect(network, &ClientNetwork::ordersUpdated,
-                        panel, &RestaurantOwnerPanel::refreshOrders);
-                setCentralWidget(panel);
-            } else {
-                QMessageBox::warning(this, "Login Error", "Restaurant ID not provided by server.");
-            }
-        }
-
-        else {
-            QMessageBox::warning(this, "Login Error", "Unknown role received from server.");
-        }
-
-    }
-    else {
-        statusLabel->setText("❌ " + msg);
-    }
-}
-
-
-void MainWindow::onExitClicked()
-{
-    qApp->quit();
-}
-
 
 void MainWindow::showWelcomeScreen()
 {
-    // حذف ویجت قبلی برای جلوگیری از memory leak
-    QWidget* oldWidget = centralWidget();
-    if (oldWidget)
-        oldWidget->deleteLater();
-
     QWidget* welcomeWidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(welcomeWidget);
 
-    QLabel* welcomeLabel = new QLabel("به سامانه سفارش غذای آنلاین خوش آمدید!");
+    QLabel* welcomeLabel = new QLabel("👋 به سامانه سفارش غذا خوش آمدید!");
     welcomeLabel->setAlignment(Qt::AlignCenter);
     layout->addWidget(welcomeLabel);
 
-    statusLabel = new QLabel(this);
+    statusLabel = new QLabel("لطفاً از منوی بالا وارد شوید.");
     statusLabel->setAlignment(Qt::AlignCenter);
-    statusLabel->setStyleSheet("color: green; font-weight: bold; font-size: 14px;");
+    statusLabel->setStyleSheet("color: gray;");
     layout->addWidget(statusLabel);
 
     welcomeWidget->setLayout(layout);
     setCentralWidget(welcomeWidget);
 }
 
-
 void MainWindow::onLoginClicked()
 {
-    LoginDialog loginDialog(network, this);  // ✅ درست
-     // فرض بر اینکه network از قبل ساخته شده
+    LoginDialog loginDialog(network, this);
     if (loginDialog.exec() == QDialog::Accepted) {
-        username = loginDialog.getUsername();  // ✅ اینجا ذخیره کن
-        QString password = loginDialog.getPassword();
-        QString role = loginDialog.getRole();
-
-        connect(network, &ClientNetwork::messageReceived,
-                this, &MainWindow::onMessageReceived);
-
-        network->sendMessage(QString("LOGIN|%1|%2|%3").arg(username, password, role));
+        username = loginDialog.getUsername();
+        userRole = loginDialog.getRole();
+        statusLabel->setText("⏳ در حال ورود...");
     }
+}
+
+void MainWindow::onMessageReceived(const QString& msg)
+{
+    if (!msg.startsWith("LOGIN_RESULT|")) return;
+
+    QStringList parts = msg.split("|");
+    if (parts.size() < 3) {
+        statusLabel->setText("❌ پاسخ نامعتبر از سرور.");
+        return;
+    }
+
+    QString result = parts[1];
+    QString role = parts[2].toUpper();
+
+    if (result != "SUCCESS") {
+        statusLabel->setText("❌ ورود ناموفق: " + msg);
+        return;
+    }
+
+    if (role == "CUSTOMER") {
+        auto* panel = new CustomerPanel(network, username);
+        connect(network, &ClientNetwork::ordersUpdated,
+                panel, &CustomerPanel::refreshOrders);
+        setCentralWidget(panel);
+    }
+    else if (role == "RESTAURANT_OWNER") {
+        if (parts.size() >= 4) {
+            int restaurantId = parts[3].toInt();
+            auto* panel = new RestaurantOwnerPanel(network, restaurantId);
+            connect(network, &ClientNetwork::ordersUpdated,
+                    panel, &RestaurantOwnerPanel::refreshOrders);
+            setCentralWidget(panel);
+        } else {
+            QMessageBox::warning(this, "Login Error", "Restaurant ID not received from server.");
+        }
+    }
+    else if (role == "ADMIN") {
+        auto* panel = new AdminPanel(network);
+        setCentralWidget(panel);
+    }
+    else {
+        QMessageBox::warning(this, "Login Error", "Unknown role: " + role);
+    }
+}
+
+void MainWindow::onExitClicked()
+{
+    qApp->quit();
 }

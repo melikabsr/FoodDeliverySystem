@@ -5,7 +5,8 @@
 #include "ShoppingCartWidget.h"
 #include "OrderHistoryWidget.h"
 #include "ClientDatabaseManager.h"
-CustomerPanel::CustomerPanel(ClientNetwork* net, const QString& username, QWidget *parent)
+
+    CustomerPanel::CustomerPanel(ClientNetwork* net, const QString& username, QWidget *parent)
     : QWidget(parent), network(net), username(username)
 {
     mainLayout = new QVBoxLayout(this);
@@ -27,14 +28,15 @@ CustomerPanel::CustomerPanel(ClientNetwork* net, const QString& username, QWidge
     mainLayout->addWidget(viewOrdersButton);
     mainLayout->addWidget(logoutButton);
 
-    // اتصال سیگنال‌ها
     connect(viewRestaurantsButton, &QPushButton::clicked, [=]() {
         auto* listWidget = new RestaurantListWidget(network, username);
+        listWidget->setAttribute(Qt::WA_DeleteOnClose);
         listWidget->show();
     });
 
     connect(viewCartButton, &QPushButton::clicked, [=]() {
         auto* cart = new ShoppingCartWidget(network, username);
+        cart->setAttribute(Qt::WA_DeleteOnClose);
         cart->show();
     });
 
@@ -53,10 +55,6 @@ void CustomerPanel::showOrderHistory()
     history->resize(450, 500);
     history->show();
 }
-
-
-
-
 
 void CustomerPanel::refreshOrders()
 {

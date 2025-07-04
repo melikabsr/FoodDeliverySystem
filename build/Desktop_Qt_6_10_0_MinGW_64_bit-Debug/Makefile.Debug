@@ -61,7 +61,6 @@ SOURCES       = ..\..\addfooddialog.cpp \
 		..\..\customerorderswindow.cpp \
 		..\..\customerpanel.cpp \
 		..\..\customerservice.cpp \
-		..\..\dialog.cpp \
 		..\..\food.cpp \
 		..\..\logindialog.cpp \
 		..\..\loginwindow.cpp \
@@ -96,7 +95,6 @@ SOURCES       = ..\..\addfooddialog.cpp \
 		debug\moc_clientnetwork.cpp \
 		debug\moc_customerorderswindow.cpp \
 		debug\moc_customerpanel.cpp \
-		debug\moc_dialog.cpp \
 		debug\moc_logindialog.cpp \
 		debug\moc_loginwindow.cpp \
 		debug\moc_mainwindow.cpp \
@@ -128,7 +126,6 @@ OBJECTS       = debug/addfooddialog.o \
 		debug/customerorderswindow.o \
 		debug/customerpanel.o \
 		debug/customerservice.o \
-		debug/dialog.o \
 		debug/food.o \
 		debug/logindialog.o \
 		debug/loginwindow.o \
@@ -164,7 +161,6 @@ OBJECTS       = debug/addfooddialog.o \
 		debug/moc_clientnetwork.o \
 		debug/moc_customerorderswindow.o \
 		debug/moc_customerpanel.o \
-		debug/moc_dialog.o \
 		debug/moc_logindialog.o \
 		debug/moc_loginwindow.o \
 		debug/moc_mainwindow.o \
@@ -198,7 +194,6 @@ DIST          =  ..\..\DebugTestWindow.h \
 		..\..\customerorderswindow.h \
 		..\..\customerpanel.h \
 		..\..\customerservice.h \
-		..\..\dialog.h \
 		..\..\enums.h \
 		..\..\food.h \
 		..\..\logindialog.h \
@@ -236,7 +231,6 @@ DIST          =  ..\..\DebugTestWindow.h \
 		..\..\customerorderswindow.cpp \
 		..\..\customerpanel.cpp \
 		..\..\customerservice.cpp \
-		..\..\dialog.cpp \
 		..\..\food.cpp \
 		..\..\logindialog.cpp \
 		..\..\loginwindow.cpp \
@@ -274,7 +268,7 @@ DESTDIR_TARGET = debug\FoodDelivery_project.exe
 first: all
 all: Makefile.Debug  debug/FoodDelivery_project.exe
 
-debug/FoodDelivery_project.exe: C:/Qt/6.10.0/mingw_64/lib/libQt6Widgets.a C:/Qt/6.10.0/mingw_64/lib/libQt6Gui.a C:/Qt/6.10.0/mingw_64/lib/libQt6Sql.a C:/Qt/6.10.0/mingw_64/lib/libQt6Network.a C:/Qt/6.10.0/mingw_64/lib/libQt6Core.a C:/Qt/6.10.0/mingw_64/lib/libQt6EntryPoint.a ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_dialog.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h $(OBJECTS) 
+debug/FoodDelivery_project.exe: C:/Qt/6.10.0/mingw_64/lib/libQt6Widgets.a C:/Qt/6.10.0/mingw_64/lib/libQt6Gui.a C:/Qt/6.10.0/mingw_64/lib/libQt6Sql.a C:/Qt/6.10.0/mingw_64/lib/libQt6Network.a C:/Qt/6.10.0/mingw_64/lib/libQt6Core.a C:/Qt/6.10.0/mingw_64/lib/libQt6EntryPoint.a ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @debug\object_script.FoodDelivery_project.Debug $(LIBS)
 
 qmake: FORCE
@@ -283,10 +277,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) FoodDelivery_project.zip $(SOURCES) $(DIST) ..\..\FoodDelivery_project.pro C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\device_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\sanitize.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\gcc-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-vulkan.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-win32.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-desktop.conf C:\Qt\6.10.0\mingw_64\mkspecs\qconfig.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdf.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdf_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfquick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfquick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\win32-g++\qmake.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\toolchain.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resolve_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\build_pass.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qml_debug.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\precompile_header.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\warn_on.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\permissions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\moc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\opengl.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\uic.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qmake_use.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\file_copies.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\testcase_targets.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exceptions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\yacc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\lex.prf ..\..\FoodDelivery_project.pro C:\Qt\6.10.0\mingw_64\lib\Qt6Widgets.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Gui.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Sql.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Network.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Core.prl C:\Qt\6.10.0\mingw_64\lib\Qt6EntryPoint.prl    C:\Qt\6.10.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\DebugTestWindow.h ..\..\addfooddialog.h ..\..\addrestaurantdialog.h ..\..\admin.h ..\..\adminmenuwidget.h ..\..\adminpanel.h ..\..\clientdatabasemanager.h ..\..\clientnetwork.h ..\..\customer.h ..\..\customerorderswindow.h ..\..\customerpanel.h ..\..\customerservice.h ..\..\dialog.h ..\..\enums.h ..\..\food.h ..\..\logindialog.h ..\..\loginwindow.h ..\..\mainwindow.h ..\..\menuwidget.h ..\..\menuwindow.h ..\..\order.h ..\..\orderhistorywidget.h ..\..\orderhistorywindow.h ..\..\orderlistwidget.h ..\..\ordermanager.h ..\..\orderstatuseditor.h ..\..\orderswindow.h ..\..\restaurant.h ..\..\restaurantadminwidget.h ..\..\restaurantlistwidget.h ..\..\restaurantlistwindow.h ..\..\restaurantorderswidget.h ..\..\restaurantorderswindow.h ..\..\restaurantowner.h ..\..\restaurantownerpanel.h ..\..\restaurantservice.h ..\..\shoppingcartwidget.h ..\..\user.h ..\..\userfactory.h ..\..\userlistwidget.h  ..\..\addfooddialog.cpp ..\..\addrestaurantdialog.cpp ..\..\admin.cpp ..\..\adminmenuwidget.cpp ..\..\adminpanel.cpp ..\..\clientdatabasemanager.cpp ..\..\clientnetwork.cpp ..\..\customer.cpp ..\..\customerorderswindow.cpp ..\..\customerpanel.cpp ..\..\customerservice.cpp ..\..\dialog.cpp ..\..\food.cpp ..\..\logindialog.cpp ..\..\loginwindow.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\menuwidget.cpp ..\..\menuwindow.cpp ..\..\order.cpp ..\..\orderhistorywidget.cpp ..\..\orderhistorywindow.cpp ..\..\orderlistwidget.cpp ..\..\ordermanager.cpp ..\..\orderstatuseditor.cpp ..\..\orderswindow.cpp ..\..\restaurant.cpp ..\..\restaurantadminwidget.cpp ..\..\restaurantlistwidget.cpp ..\..\restaurantlistwindow.cpp ..\..\restaurantorderswidget.cpp ..\..\restaurantorderswindow.cpp ..\..\restaurantowner.cpp ..\..\restaurantownerpanel.cpp ..\..\restaurantservice.cpp ..\..\shoppingcartwidget.cpp ..\..\user.cpp ..\..\userfactory.cpp ..\..\userlistwidget.cpp ..\..\addfooddialog.ui ..\..\addrestaurantdialog.ui ..\..\admin.ui ..\..\adminmenuwidget.ui ..\..\adminpanel.ui ..\..\clientdatabasemanager.ui ..\..\clientnetwork.ui ..\..\customer.ui ..\..\customerorderswindow.ui ..\..\customerpanel.ui ..\..\customerservice.ui ..\..\dialog.ui ..\..\food.ui ..\..\logindialog.ui ..\..\loginwindow.ui ..\..\mainwindow.ui ..\..\menuwidget.ui ..\..\menuwindow.ui ..\..\order.ui ..\..\orderhistorywidget.ui ..\..\orderhistorywindow.ui ..\..\orderlistwidget.ui ..\..\ordermanager.ui ..\..\orderstatuseditor.ui ..\..\orderswindow.ui ..\..\restaurant.ui ..\..\restaurantadminwidget.ui ..\..\restaurantlistwidget.ui ..\..\restaurantlistwindow.ui ..\..\restaurantorderswidget.ui ..\..\restaurantorderswindow.ui ..\..\restaurantowner.ui ..\..\restaurantownerpanel.ui ..\..\restaurantservice.ui ..\..\shoppingcartwidget.ui ..\..\user.ui ..\..\userfactory.ui ..\..\userlistwidget.ui    
+	$(ZIP) FoodDelivery_project.zip $(SOURCES) $(DIST) ..\..\FoodDelivery_project.pro C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\device_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\sanitize.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\gcc-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-base.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-vulkan.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\g++-win32.conf C:\Qt\6.10.0\mingw_64\mkspecs\common\windows-desktop.conf C:\Qt\6.10.0\mingw_64\mkspecs\qconfig.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_freetype.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libjpeg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_ext_libpng.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_example_icons_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_examples_asset_downloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_freetype_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_harfbuzz_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_jpeg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsanimation_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsfolderlistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsplatform_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labsqmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labssharedimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_labswavefrontmesh_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_linguist.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdf.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdf_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfquick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfquick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_pdfwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_png_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatch_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchconversions_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qdoccatchgenerators_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlassetdownloader_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlcore_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmldom_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlformat_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlintegration.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmllocalstorage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlls_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmeta_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlnetwork_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltoolingsettings_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmltyperegistrar_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_qmlxmllistmodel_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basic_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2basicstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fluentwinui3styleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusion_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2fusionstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imagine_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2imaginestyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2material_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2materialstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universal_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2universalstyleimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrols2windowsstyleimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickcontrolstestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2quickimpl_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickdialogs2utils_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickeffects_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicklayouts_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickshapesdesignhelpers_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quicktestutilsprivate_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimage_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickvectorimagegenerator_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testinternals_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_tools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\win32-g++\qmake.conf C:\Qt\6.10.0\mingw_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\toolchain.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\default_pre.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resolve_config.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\default_post.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\build_pass.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qml_debug.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\precompile_header.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\warn_on.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\permissions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qt.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources_functions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\resources.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\moc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\opengl.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\uic.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\qmake_use.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\file_copies.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\win32\windows.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\testcase_targets.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\exceptions.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\yacc.prf C:\Qt\6.10.0\mingw_64\mkspecs\features\lex.prf ..\..\FoodDelivery_project.pro C:\Qt\6.10.0\mingw_64\lib\Qt6Widgets.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Gui.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Sql.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Network.prl C:\Qt\6.10.0\mingw_64\lib\Qt6Core.prl C:\Qt\6.10.0\mingw_64\lib\Qt6EntryPoint.prl    C:\Qt\6.10.0\mingw_64\mkspecs\features\data\dummy.cpp ..\..\DebugTestWindow.h ..\..\addfooddialog.h ..\..\addrestaurantdialog.h ..\..\admin.h ..\..\adminmenuwidget.h ..\..\adminpanel.h ..\..\clientdatabasemanager.h ..\..\clientnetwork.h ..\..\customer.h ..\..\customerorderswindow.h ..\..\customerpanel.h ..\..\customerservice.h ..\..\enums.h ..\..\food.h ..\..\logindialog.h ..\..\loginwindow.h ..\..\mainwindow.h ..\..\menuwidget.h ..\..\menuwindow.h ..\..\order.h ..\..\orderhistorywidget.h ..\..\orderhistorywindow.h ..\..\orderlistwidget.h ..\..\ordermanager.h ..\..\orderstatuseditor.h ..\..\orderswindow.h ..\..\restaurant.h ..\..\restaurantadminwidget.h ..\..\restaurantlistwidget.h ..\..\restaurantlistwindow.h ..\..\restaurantorderswidget.h ..\..\restaurantorderswindow.h ..\..\restaurantowner.h ..\..\restaurantownerpanel.h ..\..\restaurantservice.h ..\..\shoppingcartwidget.h ..\..\user.h ..\..\userfactory.h ..\..\userlistwidget.h  ..\..\addfooddialog.cpp ..\..\addrestaurantdialog.cpp ..\..\admin.cpp ..\..\adminmenuwidget.cpp ..\..\adminpanel.cpp ..\..\clientdatabasemanager.cpp ..\..\clientnetwork.cpp ..\..\customer.cpp ..\..\customerorderswindow.cpp ..\..\customerpanel.cpp ..\..\customerservice.cpp ..\..\food.cpp ..\..\logindialog.cpp ..\..\loginwindow.cpp ..\..\main.cpp ..\..\mainwindow.cpp ..\..\menuwidget.cpp ..\..\menuwindow.cpp ..\..\order.cpp ..\..\orderhistorywidget.cpp ..\..\orderhistorywindow.cpp ..\..\orderlistwidget.cpp ..\..\ordermanager.cpp ..\..\orderstatuseditor.cpp ..\..\orderswindow.cpp ..\..\restaurant.cpp ..\..\restaurantadminwidget.cpp ..\..\restaurantlistwidget.cpp ..\..\restaurantlistwindow.cpp ..\..\restaurantorderswidget.cpp ..\..\restaurantorderswindow.cpp ..\..\restaurantowner.cpp ..\..\restaurantownerpanel.cpp ..\..\restaurantservice.cpp ..\..\shoppingcartwidget.cpp ..\..\user.cpp ..\..\userfactory.cpp ..\..\userlistwidget.cpp ..\..\addfooddialog.ui ..\..\addrestaurantdialog.ui ..\..\admin.ui ..\..\adminmenuwidget.ui ..\..\adminpanel.ui ..\..\clientdatabasemanager.ui ..\..\clientnetwork.ui ..\..\customer.ui ..\..\customerorderswindow.ui ..\..\customerpanel.ui ..\..\customerservice.ui ..\..\food.ui ..\..\logindialog.ui ..\..\loginwindow.ui ..\..\mainwindow.ui ..\..\menuwidget.ui ..\..\menuwindow.ui ..\..\order.ui ..\..\orderhistorywidget.ui ..\..\orderhistorywindow.ui ..\..\orderlistwidget.ui ..\..\ordermanager.ui ..\..\orderstatuseditor.ui ..\..\orderswindow.ui ..\..\restaurant.ui ..\..\restaurantadminwidget.ui ..\..\restaurantlistwidget.ui ..\..\restaurantlistwindow.ui ..\..\restaurantorderswidget.ui ..\..\restaurantorderswindow.ui ..\..\restaurantowner.ui ..\..\restaurantownerpanel.ui ..\..\restaurantservice.ui ..\..\shoppingcartwidget.ui ..\..\user.ui ..\..\userfactory.ui ..\..\userlistwidget.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\addfooddialog.o debug\addrestaurantdialog.o debug\admin.o debug\adminmenuwidget.o debug\adminpanel.o debug\clientdatabasemanager.o debug\clientnetwork.o debug\customer.o debug\customerorderswindow.o debug\customerpanel.o debug\customerservice.o debug\dialog.o debug\food.o debug\logindialog.o debug\loginwindow.o debug\main.o debug\mainwindow.o debug\menuwidget.o debug\menuwindow.o debug\order.o debug\orderhistorywidget.o debug\orderhistorywindow.o debug\orderlistwidget.o debug\ordermanager.o debug\orderstatuseditor.o debug\orderswindow.o debug\restaurant.o debug\restaurantadminwidget.o debug\restaurantlistwidget.o debug\restaurantlistwindow.o debug\restaurantorderswidget.o debug\restaurantorderswindow.o debug\restaurantowner.o debug\restaurantownerpanel.o debug\restaurantservice.o debug\shoppingcartwidget.o debug\user.o debug\userfactory.o debug\userlistwidget.o debug\moc_addfooddialog.o debug\moc_addrestaurantdialog.o debug\moc_adminmenuwidget.o debug\moc_adminpanel.o debug\moc_clientdatabasemanager.o debug\moc_clientnetwork.o debug\moc_customerorderswindow.o debug\moc_customerpanel.o debug\moc_dialog.o debug\moc_logindialog.o debug\moc_loginwindow.o debug\moc_mainwindow.o debug\moc_menuwidget.o debug\moc_menuwindow.o debug\moc_orderhistorywidget.o debug\moc_orderhistorywindow.o debug\moc_orderlistwidget.o debug\moc_ordermanager.o debug\moc_orderstatuseditor.o debug\moc_orderswindow.o debug\moc_restaurantadminwidget.o debug\moc_restaurantlistwidget.o debug\moc_restaurantlistwindow.o debug\moc_restaurantorderswidget.o debug\moc_restaurantorderswindow.o debug\moc_restaurantownerpanel.o debug\moc_restaurantservice.o debug\moc_shoppingcartwidget.o debug\moc_userlistwidget.o
+	-$(DEL_FILE) debug\addfooddialog.o debug\addrestaurantdialog.o debug\admin.o debug\adminmenuwidget.o debug\adminpanel.o debug\clientdatabasemanager.o debug\clientnetwork.o debug\customer.o debug\customerorderswindow.o debug\customerpanel.o debug\customerservice.o debug\food.o debug\logindialog.o debug\loginwindow.o debug\main.o debug\mainwindow.o debug\menuwidget.o debug\menuwindow.o debug\order.o debug\orderhistorywidget.o debug\orderhistorywindow.o debug\orderlistwidget.o debug\ordermanager.o debug\orderstatuseditor.o debug\orderswindow.o debug\restaurant.o debug\restaurantadminwidget.o debug\restaurantlistwidget.o debug\restaurantlistwindow.o debug\restaurantorderswidget.o debug\restaurantorderswindow.o debug\restaurantowner.o debug\restaurantownerpanel.o debug\restaurantservice.o debug\shoppingcartwidget.o debug\user.o debug\userfactory.o debug\userlistwidget.o debug\moc_addfooddialog.o debug\moc_addrestaurantdialog.o debug\moc_adminmenuwidget.o debug\moc_adminpanel.o debug\moc_clientdatabasemanager.o debug\moc_clientnetwork.o debug\moc_customerorderswindow.o debug\moc_customerpanel.o debug\moc_logindialog.o debug\moc_loginwindow.o debug\moc_mainwindow.o debug\moc_menuwidget.o debug\moc_menuwindow.o debug\moc_orderhistorywidget.o debug\moc_orderhistorywindow.o debug\moc_orderlistwidget.o debug\moc_ordermanager.o debug\moc_orderstatuseditor.o debug\moc_orderswindow.o debug\moc_restaurantadminwidget.o debug\moc_restaurantlistwidget.o debug\moc_restaurantlistwindow.o debug\moc_restaurantorderswidget.o debug\moc_restaurantorderswindow.o debug\moc_restaurantownerpanel.o debug\moc_restaurantservice.o debug\moc_shoppingcartwidget.o debug\moc_userlistwidget.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -311,9 +305,9 @@ compiler_moc_predefs_clean:
 debug/moc_predefs.h: C:/Qt/6.10.0/mingw_64/mkspecs/features/data/dummy.cpp
 	g++ -fno-keep-inline-dllexport -g -std=gnu++1z -Wall -Wextra -Wextra -dM -E -o debug\moc_predefs.h C:\Qt\6.10.0\mingw_64\mkspecs\features\data\dummy.cpp
 
-compiler_moc_header_make_all: debug/moc_addfooddialog.cpp debug/moc_addrestaurantdialog.cpp debug/moc_adminmenuwidget.cpp debug/moc_adminpanel.cpp debug/moc_clientdatabasemanager.cpp debug/moc_clientnetwork.cpp debug/moc_customerorderswindow.cpp debug/moc_customerpanel.cpp debug/moc_dialog.cpp debug/moc_logindialog.cpp debug/moc_loginwindow.cpp debug/moc_mainwindow.cpp debug/moc_menuwidget.cpp debug/moc_menuwindow.cpp debug/moc_orderhistorywidget.cpp debug/moc_orderhistorywindow.cpp debug/moc_orderlistwidget.cpp debug/moc_ordermanager.cpp debug/moc_orderstatuseditor.cpp debug/moc_orderswindow.cpp debug/moc_restaurantadminwidget.cpp debug/moc_restaurantlistwidget.cpp debug/moc_restaurantlistwindow.cpp debug/moc_restaurantorderswidget.cpp debug/moc_restaurantorderswindow.cpp debug/moc_restaurantownerpanel.cpp debug/moc_restaurantservice.cpp debug/moc_shoppingcartwidget.cpp debug/moc_userlistwidget.cpp
+compiler_moc_header_make_all: debug/moc_addfooddialog.cpp debug/moc_addrestaurantdialog.cpp debug/moc_adminmenuwidget.cpp debug/moc_adminpanel.cpp debug/moc_clientdatabasemanager.cpp debug/moc_clientnetwork.cpp debug/moc_customerorderswindow.cpp debug/moc_customerpanel.cpp debug/moc_logindialog.cpp debug/moc_loginwindow.cpp debug/moc_mainwindow.cpp debug/moc_menuwidget.cpp debug/moc_menuwindow.cpp debug/moc_orderhistorywidget.cpp debug/moc_orderhistorywindow.cpp debug/moc_orderlistwidget.cpp debug/moc_ordermanager.cpp debug/moc_orderstatuseditor.cpp debug/moc_orderswindow.cpp debug/moc_restaurantadminwidget.cpp debug/moc_restaurantlistwidget.cpp debug/moc_restaurantlistwindow.cpp debug/moc_restaurantorderswidget.cpp debug/moc_restaurantorderswindow.cpp debug/moc_restaurantownerpanel.cpp debug/moc_restaurantservice.cpp debug/moc_shoppingcartwidget.cpp debug/moc_userlistwidget.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) debug\moc_addfooddialog.cpp debug\moc_addrestaurantdialog.cpp debug\moc_adminmenuwidget.cpp debug\moc_adminpanel.cpp debug\moc_clientdatabasemanager.cpp debug\moc_clientnetwork.cpp debug\moc_customerorderswindow.cpp debug\moc_customerpanel.cpp debug\moc_dialog.cpp debug\moc_logindialog.cpp debug\moc_loginwindow.cpp debug\moc_mainwindow.cpp debug\moc_menuwidget.cpp debug\moc_menuwindow.cpp debug\moc_orderhistorywidget.cpp debug\moc_orderhistorywindow.cpp debug\moc_orderlistwidget.cpp debug\moc_ordermanager.cpp debug\moc_orderstatuseditor.cpp debug\moc_orderswindow.cpp debug\moc_restaurantadminwidget.cpp debug\moc_restaurantlistwidget.cpp debug\moc_restaurantlistwindow.cpp debug\moc_restaurantorderswidget.cpp debug\moc_restaurantorderswindow.cpp debug\moc_restaurantownerpanel.cpp debug\moc_restaurantservice.cpp debug\moc_shoppingcartwidget.cpp debug\moc_userlistwidget.cpp
+	-$(DEL_FILE) debug\moc_addfooddialog.cpp debug\moc_addrestaurantdialog.cpp debug\moc_adminmenuwidget.cpp debug\moc_adminpanel.cpp debug\moc_clientdatabasemanager.cpp debug\moc_clientnetwork.cpp debug\moc_customerorderswindow.cpp debug\moc_customerpanel.cpp debug\moc_logindialog.cpp debug\moc_loginwindow.cpp debug\moc_mainwindow.cpp debug\moc_menuwidget.cpp debug\moc_menuwindow.cpp debug\moc_orderhistorywidget.cpp debug\moc_orderhistorywindow.cpp debug\moc_orderlistwidget.cpp debug\moc_ordermanager.cpp debug\moc_orderstatuseditor.cpp debug\moc_orderswindow.cpp debug\moc_restaurantadminwidget.cpp debug\moc_restaurantlistwidget.cpp debug\moc_restaurantlistwindow.cpp debug\moc_restaurantorderswidget.cpp debug\moc_restaurantorderswindow.cpp debug\moc_restaurantownerpanel.cpp debug\moc_restaurantservice.cpp debug\moc_shoppingcartwidget.cpp debug\moc_userlistwidget.cpp
 debug/moc_addfooddialog.cpp: ../../addfooddialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -1220,18 +1214,6 @@ debug/moc_adminpanel.cpp: ../../adminpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../ClientNetwork.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
-		../../Food.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
@@ -1250,6 +1232,17 @@ debug/moc_adminpanel.cpp: ../../adminpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
+		../../ClientNetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
+		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\adminpanel.h -o debug\moc_adminpanel.cpp
@@ -1528,7 +1521,6 @@ debug/moc_clientnetwork.cpp: ../../clientnetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/q23utility.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/q20utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -1752,7 +1744,6 @@ debug/moc_customerorderswindow.cpp: ../../customerorderswindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -1959,6 +1950,11 @@ debug/moc_customerpanel.cpp: ../../customerpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
@@ -1967,12 +1963,6 @@ debug/moc_customerpanel.cpp: ../../customerpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
@@ -1999,217 +1989,12 @@ debug/moc_customerpanel.cpp: ../../customerpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\customerpanel.h -o debug\moc_customerpanel.cpp
-
-debug/moc_dialog.cpp: ../../dialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcoreglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtversionchecks.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtconfiginclude.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qconfig.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcore-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtconfigmacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompilerdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qprocessordetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsystemdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcoreexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qassert.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtnoop.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtypes.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtversion.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtypeinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerfwd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsysinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlogging.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qflags.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbasicatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qatomic_cxx11.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qgenericatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qyieldcpu.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qconstructormacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdarwinhelpers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qexceptionhandling.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qforeach.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qttypetraits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qglobalstatic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmalloc.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qminmax.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnumeric.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20type_traits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qoverload.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qswap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtresource.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qttranslation.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qversiontagging.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstdlibdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcomparehelpers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtmetamacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstring.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qchar.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearray.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrefcount.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydata.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpair.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydatapointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydataops.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainertools_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qxptype_traits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20functional.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20memory.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q17memory.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearrayview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringfwd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringliteral.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlatin1stringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qanystringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qutf8stringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringtokenizer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringbuilder.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter_base.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhashfunctions.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterator.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringlist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreevent.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qeventloop.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetatype.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatastream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevicebase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfloat16.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmath.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtformat_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterable.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetacontainer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtaggedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopeguard.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbindingstorage.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmargins.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcheckedint_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q23utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qaction.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qkeysequence.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qicon.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsize.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpixmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpaintdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrect.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpoint.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qcolor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgb.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgba64.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qimage.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtransform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpolygon.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qregion.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qspan.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20iterator.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qline.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvariant.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdebug.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtextstream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontiguouscache.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qset.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhash.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpalette.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qbrush.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfont.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qendian.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontmetrics.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontvariableaxis.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qsizepolicy.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qbitmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qevent.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qurl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qeventpoint.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qvector2d.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qvectornd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpointingdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qscreen.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QList \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QObject \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QRect \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QSize \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QSizeF \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/QTransform \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnativeinterface.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qscreen_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfuture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmutex.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qresultstore.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qthreadpool.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qthread.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrunnable.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qexception.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpromise.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		debug/moc_predefs.h \
-		C:/Qt/6.10.0/mingw_64/bin/moc.exe
-	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\dialog.h -o debug\moc_dialog.cpp
 
 debug/moc_logindialog.cpp: ../../logindialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
@@ -2436,9 +2221,6 @@ debug/moc_logindialog.cpp: ../../logindialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../User.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -2447,8 +2229,9 @@ debug/moc_logindialog.cpp: ../../logindialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\logindialog.h -o debug\moc_logindialog.cpp
@@ -2688,7 +2471,6 @@ debug/moc_loginwindow.cpp: ../../loginwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -2907,14 +2689,17 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		../../LoginDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
@@ -2934,9 +2719,6 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../User.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -2945,21 +2727,26 @@ debug/moc_mainwindow.cpp: ../../mainwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		../../Restaurant.h \
+		../../RestaurantOwnerPanel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		../../AdminPanel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\mainwindow.h -o debug\moc_mainwindow.cpp
@@ -3394,12 +3181,11 @@ debug/moc_menuwindow.cpp: ../../menuwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../clientnetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
+		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
@@ -3407,15 +3193,9 @@ debug/moc_menuwindow.cpp: ../../menuwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		../../ClientNetwork.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\menuwindow.h -o debug\moc_menuwindow.cpp
@@ -3649,7 +3429,6 @@ debug/moc_orderhistorywidget.cpp: ../../orderhistorywidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -3893,7 +3672,6 @@ debug/moc_orderhistorywindow.cpp: ../../orderhistorywindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -4483,7 +4261,7 @@ debug/moc_orderstatuseditor.cpp: ../../orderstatuseditor.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		../../clientnetwork.h \
+		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
@@ -4491,7 +4269,6 @@ debug/moc_orderstatuseditor.cpp: ../../orderstatuseditor.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -5159,27 +4936,12 @@ debug/moc_restaurantlistwidget.cpp: ../../restaurantlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -5202,10 +4964,9 @@ debug/moc_restaurantlistwidget.cpp: ../../restaurantlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../Restaurant.h \
+		../../enums.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\restaurantlistwidget.h -o debug\moc_restaurantlistwidget.cpp
@@ -5428,14 +5189,6 @@ debug/moc_restaurantlistwindow.cpp: ../../restaurantlistwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
 		../../clientnetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
@@ -5445,7 +5198,6 @@ debug/moc_restaurantlistwindow.cpp: ../../restaurantlistwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -5682,7 +5434,6 @@ debug/moc_restaurantorderswidget.cpp: ../../restaurantorderswidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -5912,7 +5663,6 @@ debug/moc_restaurantorderswindow.cpp: ../../restaurantorderswindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -6119,30 +5869,39 @@ debug/moc_restaurantownerpanel.cpp: ../../restaurantownerpanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVector \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvector.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		../../Order.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair \
+		../../ClientNetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		debug/moc_predefs.h \
 		C:/Qt/6.10.0/mingw_64/bin/moc.exe
 	C:\Qt\6.10.0\mingw_64\bin\moc.exe $(DEFINES) --include C:/Users/Melika/Desktop/iut_food/FoodDelivery_project/build/Desktop_Qt_6_10_0_MinGW_64_bit-Debug/debug/moc_predefs.h -IC:/Qt/6.10.0/mingw_64/mkspecs/win32-g++ -IC:/Users/Melika/Desktop/iut_food/FoodDelivery_project -IC:/Qt/6.10.0/mingw_64/include -IC:/Qt/6.10.0/mingw_64/include/QtWidgets -IC:/Qt/6.10.0/mingw_64/include/QtGui -IC:/Qt/6.10.0/mingw_64/include/QtSql -IC:/Qt/6.10.0/mingw_64/include/QtNetwork -IC:/Qt/6.10.0/mingw_64/include/QtCore -I. -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++ -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include -IC:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed -IC:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include ..\..\restaurantownerpanel.h -o debug\moc_restaurantownerpanel.cpp
@@ -6721,9 +6480,9 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_dialog.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h
+compiler_uic_make_all: ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_dialog.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h
+	-$(DEL_FILE) ui_addfooddialog.h ui_addrestaurantdialog.h ui_admin.h ui_adminmenuwidget.h ui_adminpanel.h ui_clientdatabasemanager.h ui_clientnetwork.h ui_customer.h ui_customerorderswindow.h ui_customerpanel.h ui_customerservice.h ui_food.h ui_logindialog.h ui_loginwindow.h ui_mainwindow.h ui_menuwidget.h ui_menuwindow.h ui_order.h ui_orderhistorywidget.h ui_orderhistorywindow.h ui_orderlistwidget.h ui_ordermanager.h ui_orderstatuseditor.h ui_orderswindow.h ui_restaurant.h ui_restaurantadminwidget.h ui_restaurantlistwidget.h ui_restaurantlistwindow.h ui_restaurantorderswidget.h ui_restaurantorderswindow.h ui_restaurantowner.h ui_restaurantownerpanel.h ui_restaurantservice.h ui_shoppingcartwidget.h ui_user.h ui_userfactory.h ui_userlistwidget.h
 ui_addfooddialog.h: ../../addfooddialog.ui \
 		C:/Qt/6.10.0/mingw_64/bin/uic.exe
 	C:\Qt\6.10.0\mingw_64\bin\uic.exe ..\..\addfooddialog.ui -o ui_addfooddialog.h
@@ -6767,10 +6526,6 @@ ui_customerpanel.h: ../../customerpanel.ui \
 ui_customerservice.h: ../../customerservice.ui \
 		C:/Qt/6.10.0/mingw_64/bin/uic.exe
 	C:\Qt\6.10.0\mingw_64\bin\uic.exe ..\..\customerservice.ui -o ui_customerservice.h
-
-ui_dialog.h: ../../dialog.ui \
-		C:/Qt/6.10.0/mingw_64/bin/uic.exe
-	C:\Qt\6.10.0\mingw_64\bin\uic.exe ..\..\dialog.ui -o ui_dialog.h
 
 ui_food.h: ../../food.ui \
 		C:/Qt/6.10.0/mingw_64/bin/uic.exe
@@ -7940,18 +7695,6 @@ debug/adminpanel.o: ../../adminpanel.cpp ../../AdminPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../ClientNetwork.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
-		../../Food.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
@@ -7970,28 +7713,23 @@ debug/adminpanel.o: ../../adminpanel.cpp ../../AdminPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
+		../../ClientNetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
+		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
-		../../userlistwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
-		../../orderlistwidget.h \
-		../../ClientDatabaseManager.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlDatabase \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqldatabase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsql-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetaobject.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlQuery \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlquery.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlError \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlerror.h
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHeaderView \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qheaderview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\adminpanel.o ..\..\adminpanel.cpp
 
 debug/clientdatabasemanager.o: ../../clientdatabasemanager.cpp ../../ClientDatabaseManager.h \
@@ -8267,24 +8005,10 @@ debug/clientnetwork.o: ../../clientnetwork.cpp ../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/q23utility.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/q20utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QDebug \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QRegularExpression \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qregularexpression.h \
-		../../ClientDatabaseManager.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlDatabase \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqldatabase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsql-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetaobject.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlQuery \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlquery.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlError \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlerror.h
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QDebug
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\clientnetwork.o ..\..\clientnetwork.cpp
 
 debug/customer.o: ../../customer.cpp ../../Customer.h \
@@ -8622,7 +8346,6 @@ debug/customerorderswindow.o: ../../customerorderswindow.cpp ../../CustomerOrder
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -8834,6 +8557,11 @@ debug/customerpanel.o: ../../customerpanel.cpp ../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
@@ -8842,12 +8570,6 @@ debug/customerpanel.o: ../../customerpanel.cpp ../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
@@ -8874,7 +8596,6 @@ debug/customerpanel.o: ../../customerpanel.cpp ../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -8885,12 +8606,10 @@ debug/customerpanel.o: ../../customerpanel.cpp ../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
 		../../RestaurantListWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		../../Restaurant.h \
 		../../ShoppingCartWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair \
+		../../OrderHistoryWidget.h \
 		../../ClientDatabaseManager.h \
 		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlDatabase \
 		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqldatabase.h \
@@ -9000,209 +8719,6 @@ debug/customerservice.o: ../../customerservice.cpp ../../CustomerService.h \
 		../../enums.h \
 		../../User.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\customerservice.o ..\..\customerservice.cpp
-
-debug/dialog.o: ../../dialog.cpp ../../dialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcoreglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtversionchecks.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtconfiginclude.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qconfig.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcore-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtconfigmacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtdeprecationdefinitions.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompilerdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qprocessordetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsystemdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcoreexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtdeprecationmarkers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtclasshelpermacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qassert.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtnoop.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtypes.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtversion.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtypeinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerfwd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsysinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlogging.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qflags.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbasicatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qatomic_cxx11.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qgenericatomic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qyieldcpu.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qconstructormacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdarwinhelpers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qexceptionhandling.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qforeach.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qttypetraits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qglobalstatic.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmalloc.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qminmax.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnumeric.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20type_traits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qoverload.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qswap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtresource.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qttranslation.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qversiontagging.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstdlibdetection.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcomparehelpers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtmetamacros.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstring.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qchar.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearray.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrefcount.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydata.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpair.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydatapointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydataops.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainertools_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qxptype_traits.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20functional.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20memory.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q17memory.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearrayview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringfwd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringliteral.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlatin1stringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qanystringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qutf8stringview.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringtokenizer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringbuilder.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter_base.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhashfunctions.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterator.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearraylist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringlist.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreevent.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbasictimer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qeventloop.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdeadlinetimer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetatype.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatastream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevicebase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfloat16.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmath.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtformat_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterable.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetacontainer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtaggedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopeguard.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qbindingstorage.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmargins.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcheckedint_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q23utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20utility.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qaction.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qkeysequence.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qicon.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsize.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpixmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpaintdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrect.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpoint.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qcolor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgb.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgba64.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qimage.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpixelformat.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtransform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpolygon.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qregion.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qspan.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/q20iterator.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qline.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvariant.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdebug.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtextstream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontiguouscache.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qset.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhash.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpalette.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qbrush.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfont.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qendian.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontmetrics.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qfontvariableaxis.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qsizepolicy.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qbitmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qevent.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qurl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qeventpoint.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qvector2d.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qvectornd.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpointingdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputdevice.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qscreen.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QList \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QObject \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QRect \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QSize \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QSizeF \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/QTransform \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnativeinterface.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qscreen_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreapplication.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfuture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfutureinterface.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmutex.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtsan_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qresultstore.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfuture_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qthreadpool.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qthread.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qrunnable.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qexception.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qpromise.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		ui_dialog.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\dialog.o ..\..\dialog.cpp
 
 debug/food.o: ../../food.cpp ../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
@@ -9512,9 +9028,6 @@ debug/logindialog.o: ../../logindialog.cpp ../../LoginDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../User.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -9523,23 +9036,20 @@ debug/logindialog.o: ../../logindialog.cpp ../../LoginDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
-		../../Customer.h \
-		../../RestaurantOwner.h \
-		../../Admin.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		../../UserFactory.h
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\logindialog.o ..\..\logindialog.cpp
 
 debug/loginwindow.o: ../../loginwindow.cpp ../../loginwindow.h \
@@ -9777,7 +9287,6 @@ debug/loginwindow.o: ../../loginwindow.cpp ../../loginwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -9800,19 +9309,15 @@ debug/loginwindow.o: ../../loginwindow.cpp ../../loginwindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
 		../../adminpanel.h \
-		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
+		../../ClientNetwork.h \
 		../../restaurantownerpanel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVector \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvector.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
-		../../Order.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\loginwindow.o ..\..\loginwindow.cpp
 
 debug/main.o: ../../main.cpp ../../ClientDatabaseManager.h \
@@ -10039,14 +9544,17 @@ debug/main.o: ../../main.cpp ../../ClientDatabaseManager.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		../../LoginDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
@@ -10066,9 +9574,6 @@ debug/main.o: ../../main.cpp ../../ClientDatabaseManager.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../User.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -10077,26 +9582,33 @@ debug/main.o: ../../main.cpp ../../ClientDatabaseManager.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		../../Restaurant.h
+		../../RestaurantOwnerPanel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		../../AdminPanel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\..\main.cpp
 
-debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QDebug \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdebug.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare.h \
+debug/mainwindow.o: ../../mainwindow.cpp ../../MainWindow.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMainWindow \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmainwindow.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiglobal.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qglobal.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qtcoreglobal.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qtversionchecks.h \
@@ -10144,17 +9656,27 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qtresource.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qttranslation.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qversiontagging.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtgui-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qwidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qnamespace.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qcompare.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstdlibdetection.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qcomparehelpers.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfloat16.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhashfunctions.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qtmetamacros.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs_win.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstring.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qchar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearray.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qrefcount.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qnamespace.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtmetamacros.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydata.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qpair.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qarraydatapointer.h \
@@ -10176,55 +9698,30 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringbuilder.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringconverter_base.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmath.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalgorithms.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtformat_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtextstream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevicebase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontiguouscache.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetatype.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatastream.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterable.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetacontainer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerinfo.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qtaggedpointer.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobjectdefs_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qfunctionaltools_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopeguard.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlist.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qhashfunctions.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterator.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qbytearraylist.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringlist.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qalgorithms.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qstringmatcher.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmap.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata_impl.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qset.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qhash.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvarlengtharray.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtgui-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtguiexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgets-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtwidgetsexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qwidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qwindowdefs_win.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qcoreevent.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qbasictimer.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qeventloop.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetatype.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qdatastream.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qiodevicebase.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopedpointer.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qfloat16.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qmath.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qtformat_impl.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qiterable.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetacontainer.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontainerinfo.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qtaggedpointer.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qscopeguard.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qobject_impl.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qbindingstorage.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qmargins.h \
@@ -10242,6 +9739,7 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qcolor.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgb.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qrgba64.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qimage.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpixelformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtransform.h \
@@ -10251,6 +9749,17 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtCore/q20iterator.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qline.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qvariant.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qdebug.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qtextstream.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qcontiguouscache.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qsharedpointer_impl.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qmap.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qshareddata_impl.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qset.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qhash.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qvarlengtharray.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/qalloc.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpalette.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qbrush.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qfont.h \
@@ -10295,14 +9804,28 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMenuBar \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmenu.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMenu \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/QAction \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		../../LoginDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLineEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlineedit.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
@@ -10317,15 +9840,11 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractslider.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qstyle.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../User.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../enums.h \
 		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
@@ -10334,50 +9853,30 @@ debug/mainwindow.o: ../../mainwindow.cpp C:/Qt/6.10.0/mingw_64/include/QtCore/QD
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
+		../../enums.h \
 		../../CustomerPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QWidget \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		../../Restaurant.h \
-		../../MenuWidget.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		../../MainWindow.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMainWindow \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmainwindow.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMenuBar \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmenubar.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmenu.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMenu \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/QAction \
-		../../CustomerService.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair \
 		../../RestaurantOwnerPanel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVector \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvector.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
-		../../Order.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
 		../../AdminPanel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QDebug \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\mainwindow.o ..\..\mainwindow.cpp
@@ -10828,12 +10327,11 @@ debug/menuwindow.o: ../../menuwindow.cpp ../../MenuWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		../../clientnetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
+		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
@@ -10841,15 +10339,14 @@ debug/menuwindow.o: ../../menuwindow.cpp ../../MenuWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		../../ClientNetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
@@ -10857,7 +10354,11 @@ debug/menuwindow.o: ../../menuwindow.cpp ../../MenuWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../CustomerService.h \
+		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair \
+		../../User.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\menuwindow.o ..\..\menuwindow.cpp
 
 debug/order.o: ../../order.cpp ../../Order.h \
@@ -11185,7 +10686,6 @@ debug/orderhistorywidget.o: ../../orderhistorywidget.cpp ../../OrderHistoryWidge
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -11449,7 +10949,6 @@ debug/orderhistorywindow.o: ../../orderhistorywindow.cpp ../../OrderHistoryWindo
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -12056,7 +11555,7 @@ debug/orderstatuseditor.o: ../../orderstatuseditor.cpp ../../OrderStatusEditor.h
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		../../clientnetwork.h \
+		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
@@ -12064,16 +11563,13 @@ debug/orderstatuseditor.o: ../../orderstatuseditor.cpp ../../OrderStatusEditor.h
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		../../ClientNetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\orderstatuseditor.o ..\..\orderstatuseditor.cpp
 
 debug/orderswindow.o: ../../orderswindow.cpp ../../OrdersWindow.h \
@@ -12854,27 +12350,12 @@ debug/restaurantlistwidget.o: ../../restaurantlistwidget.cpp ../../RestaurantLis
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		../../enums.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
@@ -12897,19 +12378,27 @@ debug/restaurantlistwidget.o: ../../restaurantlistwidget.cpp ../../RestaurantLis
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
-		../../Restaurant.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		../../enums.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../menuwidget.h \
 		../../MenuWindow.h \
-		../../clientnetwork.h
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/QCloseEvent
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\restaurantlistwidget.o ..\..\restaurantlistwidget.cpp
 
 debug/restaurantlistwindow.o: ../../restaurantlistwindow.cpp ../../restaurantlistwindow.h \
@@ -13130,14 +12619,6 @@ debug/restaurantlistwindow.o: ../../restaurantlistwindow.cpp ../../restaurantlis
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabbar.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
 		../../clientnetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
@@ -13147,18 +12628,25 @@ debug/restaurantlistwindow.o: ../../restaurantlistwindow.cpp ../../restaurantlis
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
 		../../menuwidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidgetItem \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QDebug \
-		../../MenuWidget.h
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\restaurantlistwindow.o ..\..\restaurantlistwindow.cpp
 
 debug/restaurantorderswidget.o: ../../restaurantorderswidget.cpp ../../RestaurantOrdersWidget.h \
@@ -13390,7 +12878,6 @@ debug/restaurantorderswidget.o: ../../restaurantorderswidget.cpp ../../Restauran
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -13407,7 +12894,6 @@ debug/restaurantorderswidget.o: ../../restaurantorderswidget.cpp ../../Restauran
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
-		../../clientnetwork.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
@@ -13638,7 +13124,6 @@ debug/restaurantorderswindow.o: ../../restaurantorderswindow.cpp ../../Restauran
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
@@ -13985,32 +13470,39 @@ debug/restaurantownerpanel.o: ../../restaurantownerpanel.cpp ../../RestaurantOwn
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qguiapplication_platform.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QVector \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qvector.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QVBoxLayout \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qboxlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayout.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlayoutitem.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgridlayout.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qframe.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
+		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTextEdit \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtextedit.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextdocument.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextoption.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextcursor.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qtextformat.h \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/qpen.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QGroupBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qgroupbox.h \
 		../../Food.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/QString \
 		../../enums.h \
-		../../Order.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QMap \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QPair \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QApplication \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qapplication.h \
+		../../ClientNetwork.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
 		../../AddFoodDialog.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QDialog \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialog.h \
@@ -14030,39 +13522,9 @@ debug/restaurantownerpanel.o: ../../restaurantownerpanel.cpp ../../RestaurantOwn
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtabwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qrubberband.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QPushButton \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qpushbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QLabel \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlabel.h \
-		C:/Qt/6.10.0/mingw_64/include/QtGui/qpicture.h \
-		../../OrderManager.h \
 		../../RestaurantOrdersWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QScrollArea \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qscrollarea.h \
-		../../ClientNetwork.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/QTcpSocket \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtcpsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
-		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
-		../../ClientDatabaseManager.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlDatabase \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqldatabase.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlglobal.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsql-config.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qtsqlexports.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/qmetaobject.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlQuery \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlquery.h \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/QSqlError \
-		C:/Qt/6.10.0/mingw_64/include/QtSql/qsqlerror.h \
 		../../MainWindow.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMainWindow \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmainwindow.h \
@@ -14072,15 +13534,19 @@ debug/restaurantownerpanel.o: ../../restaurantownerpanel.cpp ../../RestaurantOwn
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMenu \
 		C:/Qt/6.10.0/mingw_64/include/QtGui/QAction \
 		../../LoginDialog.h \
-		../../User.h \
 		../../CustomerPanel.h \
-		../../OrderHistoryWidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QListWidget \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistwidget.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qlistview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qabstractitemview.h \
 		C:/Qt/6.10.0/mingw_64/include/QtCore/qitemselectionmodel.h \
-		../../Restaurant.h
+		../../AdminPanel.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QTableWidget \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtablewidget.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qtableview.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.10.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\restaurantownerpanel.o ..\..\restaurantownerpanel.cpp
 
 debug/restaurantservice.o: ../../restaurantservice.cpp ../../RestaurantService.h \
@@ -14439,8 +13905,7 @@ debug/shoppingcartwidget.o: ../../shoppingcartwidget.cpp ../../ShoppingCartWidge
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qtnetworkexports.h \
 		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qabstractsocket.h \
-		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h \
-		C:/Qt/6.10.0/mingw_64/include/QtCore/QStringList
+		C:/Qt/6.10.0/mingw_64/include/QtNetwork/qhostaddress.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\shoppingcartwidget.o ..\..\shoppingcartwidget.cpp
 
 debug/user.o: ../../user.cpp ../../User.h \
@@ -14880,9 +14345,6 @@ debug/moc_customerorderswindow.o: debug/moc_customerorderswindow.cpp
 
 debug/moc_customerpanel.o: debug/moc_customerpanel.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_customerpanel.o debug\moc_customerpanel.cpp
-
-debug/moc_dialog.o: debug/moc_dialog.cpp 
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_dialog.o debug\moc_dialog.cpp
 
 debug/moc_logindialog.o: debug/moc_logindialog.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_logindialog.o debug\moc_logindialog.cpp

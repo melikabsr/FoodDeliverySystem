@@ -9,7 +9,6 @@ release/customer.o
 release/customerorderswindow.o
 release/customerpanel.o
 release/customerservice.o
-release/dialog.o
 release/food.o
 release/logindialog.o
 release/loginwindow.o
@@ -45,7 +44,6 @@ release/moc_clientdatabasemanager.o
 release/moc_clientnetwork.o
 release/moc_customerorderswindow.o
 release/moc_customerpanel.o
-release/moc_dialog.o
 release/moc_logindialog.o
 release/moc_loginwindow.o
 release/moc_mainwindow.o

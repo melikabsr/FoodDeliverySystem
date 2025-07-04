@@ -1,77 +1,19 @@
 #include "AdminPanel.h"
 #include <QMessageBox>
-#include <QApplication>
-#include "userlistwidget.h"
-#include "orderlistwidget.h"
-#include "ClientDatabaseManager.h"
-// AdminPanel::AdminPanel(QWidget *parent)
-//     : QWidget(parent)
-// {
-//     setWindowTitle("🛡️ Admin Dashboard");
-//     resize(400, 300);
-
-//     titleLabel = new QLabel("🧭 Welcome, Admin!", this);
-//     titleLabel->setAlignment(Qt::AlignCenter);
-//     titleLabel->setStyleSheet("font-size: 18px; font-weight: bold;");
-
-//     viewUsersBtn = new QPushButton("👥 View All Users");
-//     viewOrdersBtn = new QPushButton("📦 View All Orders");
-//     exitBtn = new QPushButton("❌ Exit");
-
-//     layout = new QVBoxLayout(this);
-//     layout->addWidget(titleLabel);
-//     layout->addSpacing(10);
-//     layout->addWidget(viewUsersBtn);
-//     layout->addWidget(viewOrdersBtn);
-//     layout->addWidget(exitBtn);
-
-//     // اتصال‌ها
-//     connect(viewUsersBtn, &QPushButton::clicked, this, &AdminPanel::onViewUsersClicked);
-//     connect(viewOrdersBtn, &QPushButton::clicked, this, &AdminPanel::onViewOrdersClicked);
-//     connect(exitBtn, &QPushButton::clicked, this, &AdminPanel::onExitClicked);
-// }
-
-void AdminPanel::onViewUsersClicked()
-{
-    auto* widget = new UserListWidget();
-    widget->show();
-}
-
-void AdminPanel::onViewOrdersClicked()
-{
-    auto* orders = new OrderListWidget();
-    orders->show();
-}
-
-void AdminPanel::onExitClicked()
-{
-    QMessageBox::information(this, "Exit", "👋 Logging out...");
-    qApp->exit();
-}
-
+#include <QHeaderView>
 
 AdminPanel::AdminPanel(ClientNetwork* net, QWidget *parent)
     : QWidget(parent), network(net)
 {
     setWindowTitle("🛡️ Admin Dashboard");
-    resize(400, 300);
+    resize(600, 500);
 
-    // ساخت لایه
     layout = new QVBoxLayout(this);
 
-    // جدول سفارش‌ها
-    ordersTable = new QTableWidget(this);
-    ordersTable->setColumnCount(4);
-    QStringList headers = {"شناسه", "وضعیت", "جمع کل", "اقلام"};
-    ordersTable->setHorizontalHeaderLabels(headers);
-    layout->addWidget(ordersTable);
-
-    // اجزای گرافیکی
-    titleLabel = new QLabel("🧭 Welcome, Admin!", this);
+    titleLabel = new QLabel("👑 Welcome, Admin!");
     titleLabel->setAlignment(Qt::AlignCenter);
     titleLabel->setStyleSheet("font-size: 18px; font-weight: bold;");
     layout->addWidget(titleLabel);
-    layout->addSpacing(10);
 
     viewUsersBtn = new QPushButton("👥 View All Users");
     viewOrdersBtn = new QPushButton("📦 View All Orders");
@@ -81,27 +23,56 @@ AdminPanel::AdminPanel(ClientNetwork* net, QWidget *parent)
     layout->addWidget(viewOrdersBtn);
     layout->addWidget(exitBtn);
 
-    // اتصال سیگنال‌ها
+    ordersTable = new QTableWidget(this);
+    ordersTable->setColumnCount(3);
+    ordersTable->setHorizontalHeaderLabels({"Order ID", "Username", "Status"});
+    ordersTable->horizontalHeader()->setStretchLastSection(true);
+    layout->addWidget(ordersTable);
+    ordersTable->hide();
+
     connect(viewUsersBtn, &QPushButton::clicked, this, &AdminPanel::onViewUsersClicked);
     connect(viewOrdersBtn, &QPushButton::clicked, this, &AdminPanel::onViewOrdersClicked);
     connect(exitBtn, &QPushButton::clicked, this, &AdminPanel::onExitClicked);
+    connect(network, &ClientNetwork::messageReceived, this, &AdminPanel::onMessageReceived);
 }
 
-
-
-
-void AdminPanel::refreshOrders()
+void AdminPanel::onViewUsersClicked()
 {
-    ordersTable->setRowCount(0);  // پاکسازی جدول
+    network->sendMessage("GET_ALL_USERS");
+}
 
-    QList<QMap<QString, QVariant>> orders = ClientDatabaseManager::instance().getAllOrders();
-    for (const auto& order : orders) {
-        int row = ordersTable->rowCount();
-        ordersTable->insertRow(row);
+void AdminPanel::onViewOrdersClicked()
+{
+    network->sendMessage("GET_ALL_ORDERS");
+    ordersTable->show();
+}
 
-        ordersTable->setItem(row, 0, new QTableWidgetItem(QString::number(order["id"].toInt())));
-        ordersTable->setItem(row, 1, new QTableWidgetItem(order["status"].toString()));
-        ordersTable->setItem(row, 2, new QTableWidgetItem(QString::number(order["total"].toDouble())));
-        ordersTable->setItem(row, 3, new QTableWidgetItem(order["items"].toString()));
+void AdminPanel::onExitClicked()
+{
+    QMessageBox::information(this, "Logout", "Exiting admin panel...");
+    close();
+}
+
+void AdminPanel::onMessageReceived(const QString& msg)
+{
+    if (msg.startsWith("ALL_USERS|")) {
+        QStringList users = msg.section("|", 1).split(";", Qt::SkipEmptyParts);
+        QString userText = "📋 Registered Users:\n\n" + users.join("\n");
+        QMessageBox::information(this, "Users", userText);
+    }
+    else if (msg.startsWith("ALL_ORDERS|")) {
+        QStringList entries = msg.section("|", 1).split(";", Qt::SkipEmptyParts);
+        ordersTable->setRowCount(0);
+
+        for (const QString& row : entries) {
+            QStringList parts = row.split("|");
+            if (parts.size() < 3) continue;
+
+            int r = ordersTable->rowCount();
+            ordersTable->insertRow(r);
+            ordersTable->setItem(r, 0, new QTableWidgetItem(parts[0].trimmed()));
+            ordersTable->setItem(r, 1, new QTableWidgetItem(parts[1].trimmed()));
+            ordersTable->setItem(r, 2, new QTableWidgetItem(parts[2].trimmed()));
+        }
     }
 }

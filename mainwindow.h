@@ -6,12 +6,13 @@
 #include <QMenu>
 #include <QAction>
 #include <QVBoxLayout>
-#include "LoginDialog.h"
-#include "User.h"
-#include "CustomerPanel.h"
-#include "Restaurant.h"
-#include "ClientNetwork.h"
 #include <QLabel>
+#include "LoginDialog.h"
+#include "ClientNetwork.h"
+#include "CustomerPanel.h"
+#include "RestaurantOwnerPanel.h"
+#include "AdminPanel.h"
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -19,16 +20,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void showWelcomeScreen();
+ void showWelcomeScreen();
+public slots:
+    void onMessageReceived(const QString& msg);
 
 private slots:
     void onLoginClicked();
     void onExitClicked();
-    void onMessageReceived(const QString& msg);  // ✅ حالا تعریف شده
 
 private:
-
-    QVBoxLayout* mainLayout;
     QMenuBar* menuBar;
     QMenu* fileMenu;
     QAction* loginAction;
@@ -36,6 +36,10 @@ private:
     ClientNetwork* network;
     QLabel* statusLabel;
     QString username;
+    QString userRole;
+
+
 };
 
 #endif // MAINWINDOW_H
+

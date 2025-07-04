@@ -35,11 +35,12 @@ void RestaurantOrdersWindow::requestOrders()
 
 void RestaurantOrdersWindow::handleOrderResponse(const QString& message)
 {
-    if (!message.startsWith("ORDERS|")) return;
+    if (!message.startsWith("RESTAURANT_ORDERS|")) return;
 
-    QString data = message.mid(QString("ORDERS|").length());
+    QString data = message.section("|", 1);  // همه داده‌ها بعد از اولین '|'
     QStringList orderList = data.split(";", Qt::SkipEmptyParts);
 
+    // پاکسازی سفارش‌های قبلی
     QLayoutItem* item;
     while ((item = mainLayout->takeAt(0)) != nullptr) {
         delete item->widget();
@@ -51,19 +52,23 @@ void RestaurantOrdersWindow::handleOrderResponse(const QString& message)
         return;
     }
 
-    for (const QString& orderStr : orderList) {
-        // فرمت: 🧾 Order #2 - username - 40000 تومان [Pizza×1, Salad×1]
-        QString line = orderStr.trimmed();
-        QGroupBox* box = new QGroupBox(line);
+    for (const QString& row : orderList) {
+        QStringList parts = row.split("|");
+        if (parts.size() < 4) continue;
+
+        int orderId = parts[0].toInt();
+        QString customer = parts[1];
+        QString status = parts[2];
+        QString items = parts[3];
+
+        QString display = QString("🧾 Order #%1 - %2 - [%3]").arg(orderId).arg(customer).arg(items);
+        QGroupBox* box = new QGroupBox(display);
         QVBoxLayout* vbox = new QVBoxLayout(box);
 
         QComboBox* statusBox = new QComboBox();
         statusBox->addItems({"PENDING", "CONFIRMED", "PREPARING", "READY", "DELIVERED", "CANCELLED"});
-
-        // استخراج ID سفارش از متن (مثلاً "#2")
-        int idStart = line.indexOf("#") + 1;
-        int idEnd = line.indexOf(" ", idStart);
-        int orderId = line.mid(idStart, idEnd - idStart).toInt();
+        int index = statusBox->findText(status.toUpper());
+        if (index >= 0) statusBox->setCurrentIndex(index);
 
         QPushButton* updateBtn = new QPushButton("Update Status");
         connect(updateBtn, &QPushButton::clicked, this, [=]() {
@@ -74,7 +79,6 @@ void RestaurantOrdersWindow::handleOrderResponse(const QString& message)
         vbox->addWidget(updateBtn);
         box->setLayout(vbox);
         mainLayout->addWidget(box);
-
     }
 }
 

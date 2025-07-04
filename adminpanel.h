@@ -5,20 +5,21 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QVBoxLayout>
-#include "ClientNetwork.h"
 #include <QTableWidget>
+#include "ClientNetwork.h"
+
 class AdminPanel : public QWidget
 {
     Q_OBJECT
 
 public:
-   //explicit AdminPanel(QWidget *parent = nullptr);
     explicit AdminPanel(ClientNetwork* net, QWidget *parent = nullptr);
 
 private slots:
     void onViewUsersClicked();
     void onViewOrdersClicked();
     void onExitClicked();
+    void onMessageReceived(const QString& msg);
 
 private:
     QLabel* titleLabel;
@@ -26,12 +27,9 @@ private:
     QPushButton* viewOrdersBtn;
     QPushButton* exitBtn;
     QVBoxLayout* layout;
-     ClientNetwork* network;
-
+    ClientNetwork* network;
     QTableWidget* ordersTable;
-
-public slots:
-     void refreshOrders();
 };
 
 #endif // ADMINPANEL_H
+

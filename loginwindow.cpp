@@ -5,6 +5,7 @@
 #include "restaurantlistwindow.h"
 #include "adminpanel.h"
 #include "restaurantownerpanel.h"
+
 LoginWindow::LoginWindow(QWidget* parent)
     : QWidget(parent)
 {
@@ -35,7 +36,6 @@ LoginWindow::LoginWindow(QWidget* parent)
     network = new ClientNetwork(this);
     connect(network, &ClientNetwork::messageReceived, this, &LoginWindow::onMessageReceived);
     connect(network, &ClientNetwork::errorOccurred, this, &LoginWindow::onNetworkError);
-
     connect(loginButton, &QPushButton::clicked, this, &LoginWindow::onLoginClicked);
 
     if (!network->connectToServer("127.0.0.1", 1234)) {
@@ -56,7 +56,6 @@ void LoginWindow::onLoginClicked()
         return;
     }
 
-    // تبدیل نقش به قالب مناسب سرور
     QString role;
     if (selectedRole == "customer")
         role = "CUSTOMER";
@@ -75,47 +74,53 @@ void LoginWindow::onMessageReceived(const QString& msg)
 {
     QStringList parts = msg.split("|");
     if (parts.size() >= 3 && parts[0] == "LOGIN_RESULT" && parts[1] == "SUCCESS") {
-        QString role = parts[2].trimmed().toUpper();
+        QString role = parts[2].trimmed();
+
         statusLabel->setText("✅ Login successful!");
 
-        if (role == "CUSTOMER") {
-            auto* customerWin = new RestaurantListWindow(network);
+        if (role.compare("customer", Qt::CaseInsensitive) == 0) {
+            auto* customerWin = new RestaurantListWindow(network, this);
+            customerWin->setAttribute(Qt::WA_DeleteOnClose);
             customerWin->show();
-        } else if (role == "RESTAURANT_OWNER") {
+        } else if (role.compare("restaurant_owner", Qt::CaseInsensitive) == 0 ||
+                   role.compare("restaurantowner", Qt::CaseInsensitive) == 0) {
             if (parts.size() >= 4) {
-                int restaurantId = parts[3].toInt();  // تبدیل متن به عدد
-                auto* ownerWin = new RestaurantOwnerPanel(network, restaurantId);
+                int restaurantId = parts[3].toInt();
+                auto* ownerWin = new RestaurantOwnerPanel(network, restaurantId, this);
+                ownerWin->setAttribute(Qt::WA_DeleteOnClose);
                 ownerWin->show();
             } else {
                 QMessageBox::warning(this, "Invalid data", "Restaurant ID missing for owner login.");
                 return;
             }
+        } else if (role.compare("admin", Qt::CaseInsensitive) == 0) {
+            auto* adminWin = new AdminPanel(network, this);
+            adminWin->setAttribute(Qt::WA_DeleteOnClose);
+            adminWin->show();
         } else {
             QMessageBox::warning(this, "Unknown role", "Unknown user role received from server.");
             return;
         }
 
-        this->close();
+        this->hide(); // پنهان کردن پنجره لاگین
     } else {
         statusLabel->setText("❌ " + msg);
     }
 }
 
-
+void LoginWindow::onNetworkError(const QString& err)
+{
+    QMessageBox::critical(this, "Network Error", err);
+}
 
 QString LoginWindow::getUsername() const {
     return usernameEdit->text().trimmed();
 }
+
 QString LoginWindow::getPassword() const {
     return passwordEdit->text().trimmed();
 }
+
 QString LoginWindow::getRole() const {
     return roleCombo->currentText().trimmed().toLower();
-}
-
-
-
-void LoginWindow::onNetworkError(const QString& err)
-{
-    QMessageBox::critical(this, "Network Error", err);
 }

@@ -17,7 +17,6 @@ SOURCES += \
     customerorderswindow.cpp \
     customerpanel.cpp \
     customerservice.cpp \
-    dialog.cpp \
     food.cpp \
     logindialog.cpp \
     loginwindow.cpp \
@@ -59,7 +58,6 @@ HEADERS += \
     customerorderswindow.h \
     customerpanel.h \
     customerservice.h \
-    dialog.h \
     enums.h \
     food.h \
     logindialog.h \
@@ -100,7 +98,6 @@ FORMS += \
     customerorderswindow.ui \
     customerpanel.ui \
     customerservice.ui \
-    dialog.ui \
     food.ui \
     logindialog.ui \
     loginwindow.ui \

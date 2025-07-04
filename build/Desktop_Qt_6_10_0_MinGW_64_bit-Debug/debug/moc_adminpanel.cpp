@@ -44,7 +44,8 @@ template <> constexpr inline auto AdminPanel::qt_create_metaobjectdata<qt_meta_t
         "",
         "onViewOrdersClicked",
         "onExitClicked",
-        "refreshOrders"
+        "onMessageReceived",
+        "msg"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -54,8 +55,10 @@ template <> constexpr inline auto AdminPanel::qt_create_metaobjectdata<qt_meta_t
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onExitClicked'
         QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
-        // Slot 'refreshOrders'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onMessageReceived'
+        QtMocHelpers::SlotData<void(const QString &)>(5, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 6 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -82,11 +85,10 @@ void AdminPanel::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 0: _t->onViewUsersClicked(); break;
         case 1: _t->onViewOrdersClicked(); break;
         case 2: _t->onExitClicked(); break;
-        case 3: _t->refreshOrders(); break;
+        case 3: _t->onMessageReceived((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
         default: ;
         }
     }
-    (void)_a;
 }
 
 const QMetaObject *AdminPanel::metaObject() const

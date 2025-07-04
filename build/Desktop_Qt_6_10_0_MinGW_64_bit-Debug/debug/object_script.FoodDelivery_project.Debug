@@ -9,7 +9,6 @@ debug/customer.o
 debug/customerorderswindow.o
 debug/customerpanel.o
 debug/customerservice.o
-debug/dialog.o
 debug/food.o
 debug/logindialog.o
 debug/loginwindow.o
@@ -45,7 +44,6 @@ debug/moc_clientdatabasemanager.o
 debug/moc_clientnetwork.o
 debug/moc_customerorderswindow.o
 debug/moc_customerpanel.o
-debug/moc_dialog.o
 debug/moc_logindialog.o
 debug/moc_loginwindow.o
 debug/moc_mainwindow.o

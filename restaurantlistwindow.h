@@ -4,30 +4,29 @@
 
 #include <QWidget>
 #include <QListWidget>
-#include <QPushButton>
-#include <QVBoxLayout>
 #include <QMap>
 #include "clientnetwork.h"
 #include "Food.h"
+
 class RestaurantListWindow : public QWidget
 {
     Q_OBJECT
 public:
-    explicit RestaurantListWindow(ClientNetwork* net, QWidget* parent = nullptr);
+    explicit RestaurantListWindow(ClientNetwork* network, QWidget* parent = nullptr);
 
 private slots:
-    void onRestaurantClicked(QListWidgetItem* item);
     void onMessageReceived(const QString& msg);
+    void onRestaurantClicked(QListWidgetItem* item);
 
 private:
-    int pendingRestaurantId; // تعریفش رو به صورت private int توی کلاس اضافه کن
-   QList<Food> parseMenuFromString(const QString& data);
     ClientNetwork* network;
     QListWidget* restaurantList;
     QMap<QString, int> nameToId;
+
+    int pendingRestaurantId = -1;
     QString pendingRestaurantName;
 
-   // QList<Food> parseMenuFromString(const QString& data);
+    QList<Food> parseMenuFromString(const QString& data);
 };
 
 #endif // RESTAURANTLISTWINDOW_H
